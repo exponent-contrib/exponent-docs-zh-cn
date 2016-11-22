@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="../../../_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../../../_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/img/apple-touch-icon-180x180.png"/>
+  <link rel="icon" type="image/png" href="../../../_static/img/favicon-32x32.png" sizes="32x32"/>
+  <meta name="msapplication-TileColor" content="#023c69"/>
+  <meta name="msapplication-TileImage" content="../../../_static/img/mstile-144x144.png"/>
+  <meta name="theme-color" content="#023c69"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  
+    <title>GLView &mdash; Exponent unversioned documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     'unversioned',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="SDK API Reference" href="index.html" />
+    <link rel="next" title="Google" href="google.html" />
+    <link rel="prev" title="Font" href="font.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="google.html" title="Google"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="font.html" title="Font"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">SDK API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    ../index.html" class="text-logo">Exponent</a>
+
+<p id="version-indicator"> unversioned </p>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="../../../search.html" method="GET" role="form">
+        <div class="input-group">
+          <input id="algolia-search-box" name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+  appId: 'S6DBW4862L',
+  apiKey: '59ebba04e5d2e4bed5d5ae12eed28bdd',
+  indexName: 'exponent-docs',
+  inputSelector: '#algolia-search-box',
+  algoliaOptions: { facetFilters: [ "tags:unversioned" ], hitsPerPage: 5 }
+});
+</script>
+        
+<div class="sidebar-block">
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">SDK API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="amplitude.html">Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-loading.html">AppLoading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset.html">Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bar-code-scanner.html">BarCodeScanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blur-view.html">BlurView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="font.html">Font</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GLView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagepicker.html">ImagePicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-gradient.html">LinearGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map-view.html">MapView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="permissions.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segment.html">Segment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="svg.html">Svg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">Video</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          <div class="document body">
+            
+  <div class="section" id="glview">
+<h1>GLView<a class="headerlink" href="#glview" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="Exponent.GLView">
+<em class="property">class </em><code class="descclassname">Exponent.</code><code class="descname">GLView</code><a class="headerlink" href="#Exponent.GLView" title="Permalink to this definition">¶</a></dt>
+<dd><p>一个 <code class="docutils literal"><span class="pre">View</span></code>, 作为 OpenGL ES 渲染对象。在加载的时候，一个 OpenGL ES 环境会创建。
+每一帧它的 drawing buffer 都会当作这个 <code class="docutils literal"><span class="pre">View</span></code> 的内容。</p>
+<p>除了一般的 <code class="docutils literal"><span class="pre">View</span></code> 属性，比如 layout 还有 触摸操作， 还有下面的这些属性：</p>
+<dl class="attribute">
+<dt id="Exponent.GLView.onContextCreate">
+<code class="descname">onContextCreate</code><a class="headerlink" href="#Exponent.GLView.onContextCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>当 OpenGL ES 环境创建的时候，会调用这个方法。这个方法需要一个参数，用来代表底层的 OpenGL ES 环境:
+<a class="reference internal" href="#gl-object"><span class="std std-ref">gl</span></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="gl">
+<span id="gl-object"></span><h2><code class="docutils literal"><span class="pre">gl</span></code> 对象<a class="headerlink" href="#gl" title="Permalink to this headline">¶</a></h2>
+<p>一旦组件加载，OpenGL ES 环境创建成功，传入属性 <a class="reference internal" href="#Exponent.GLView.onContextCreate" title="Exponent.GLView.onContextCreate"><code class="xref any py py-attr docutils literal"><span class="pre">onContextCreate</span></code></a> 的 <cite>gl</cite> 对象就成为 OpenGL ES 环境的接口，提供
+类似 WebGL 的 API。类似 WebGL 1 规范，<a class="reference external" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.14">WebGLRenderingContext</a>. 还有一个方法
+<cite>endFrameExp</cite> 可以通知当前环境当前帧可以显示了。类似其他 OpenGL 平台上的 'swap buffers'
+API 调用。</p>
+<p>SDK 11.0.0 还没有实现所有的 WebGL 功能。我们会在接下来的 SDK 版本里不断完善 API。</p>
+<p>下面是还没有实现的 <cite>WebGLRenderContext</cite> 方法。</p>
+<ul class="simple">
+<li>Buffer<ul>
+<li><code class="docutils literal"><span class="pre">isBuffer</span></code></li>
+</ul>
+</li>
+<li>Texture<ul>
+<li><code class="docutils literal"><span class="pre">compressedTexImage2D</span></code></li>
+<li><code class="docutils literal"><span class="pre">compressedTexSubImage2D</span></code></li>
+<li><code class="docutils literal"><span class="pre">copyTexImage2D</span></code></li>
+<li><code class="docutils literal"><span class="pre">copyTexSubImage2D</span></code></li>
+<li><code class="docutils literal"><span class="pre">getTexParameter</span></code></li>
+<li><code class="docutils literal"><span class="pre">isTexture</span></code></li>
+<li><code class="docutils literal"><span class="pre">texSubImage2D</span></code></li>
+</ul>
+</li>
+<li>Program an shaders<ul>
+<li><code class="docutils literal"><span class="pre">bindAttribLocation</span></code></li>
+<li><code class="docutils literal"><span class="pre">getAttachedShaders</span></code></li>
+<li><code class="docutils literal"><span class="pre">isProgram</span></code></li>
+<li><code class="docutils literal"><span class="pre">isShader</span></code></li>
+</ul>
+</li>
+<li>Uniform an attributes<ul>
+<li><code class="docutils literal"><span class="pre">getUniform</span></code></li>
+<li><code class="docutils literal"><span class="pre">getVertexAttrib</span></code></li>
+<li><code class="docutils literal"><span class="pre">getVertexAttribOffset</span></code></li>
+<li><code class="docutils literal"><span class="pre">vertexAttrib1fv</span></code></li>
+<li><code class="docutils literal"><span class="pre">vertexAttrib2fv</span></code></li>
+<li><code class="docutils literal"><span class="pre">vertexAttrib3fv</span></code></li>
+<li><code class="docutils literal"><span class="pre">vertexAttrib4fv</span></code></li>
+</ul>
+</li>
+<li>Misc<ul>
+<li><code class="docutils literal"><span class="pre">finish</span></code></li>
+<li><code class="docutils literal"><span class="pre">getSupportedExtensions</span></code></li>
+</ul>
+</li>
+<li>Framebuffer<ul>
+<li><code class="docutils literal"><span class="pre">checkFramebufferStatus</span></code></li>
+<li><code class="docutils literal"><span class="pre">createFramebuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">deleteFramebuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">framebufferRenderbuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">framebufferTexture2D</span></code></li>
+<li><code class="docutils literal"><span class="pre">getFramebufferAttachmentParameter</span></code></li>
+<li><code class="docutils literal"><span class="pre">isFramebuffer</span></code></li>
+</ul>
+</li>
+<li>Renderbuffer<ul>
+<li><code class="docutils literal"><span class="pre">bindRenderbuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">createRenderbuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">deleteRenderbuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">getRenderbufferParameter</span></code></li>
+<li><code class="docutils literal"><span class="pre">isRenderbuffer</span></code></li>
+<li><code class="docutils literal"><span class="pre">renderbufferStorage</span></code></li>
+</ul>
+</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">readPixels</span></code> 当前只支持 Android。</p>
+<p><code class="docutils literal"><span class="pre">texImage2D</span></code> 只支持 9 个参数的形式。最后一个参数要么是一个 <cite>ArrayBuffer</cite> (WebGL 规范里的 texture 数据),
+要么是一个 <cite>Exponent.Asset</cite> (作为 texture source 的一张图片)。</p>
+<p>为了性能，当前这些方法对参数不做类型或者边界检查。所以如果传入的参数不合法，就会导致 native 崩溃。
+之后的 SDK 版本我们计划加入参数检查。</p>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="font.html" title="previous chapter (use the left arrow)">&laquo; Font</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="google.html" title="next chapter (use the right arrow)">Google &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="google.html" title="Google"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="font.html" title="Font"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >SDK API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="../../../_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2016, Exponent. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

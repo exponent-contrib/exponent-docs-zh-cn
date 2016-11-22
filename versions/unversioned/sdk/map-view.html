@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="../../../_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../../../_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/img/apple-touch-icon-180x180.png"/>
+  <link rel="icon" type="image/png" href="../../../_static/img/favicon-32x32.png" sizes="32x32"/>
+  <meta name="msapplication-TileColor" content="#023c69"/>
+  <meta name="msapplication-TileImage" content="../../../_static/img/mstile-144x144.png"/>
+  <meta name="theme-color" content="#023c69"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  
+    <title>MapView &mdash; Exponent unversioned documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     'unversioned',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="SDK API Reference" href="index.html" />
+    <link rel="next" title="Permissions" href="permissions.html" />
+    <link rel="prev" title="Location" href="location.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="permissions.html" title="Permissions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="location.html" title="Location"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">SDK API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    ../index.html" class="text-logo">Exponent</a>
+
+<p id="version-indicator"> unversioned </p>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="../../../search.html" method="GET" role="form">
+        <div class="input-group">
+          <input id="algolia-search-box" name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+  appId: 'S6DBW4862L',
+  apiKey: '59ebba04e5d2e4bed5d5ae12eed28bdd',
+  indexName: 'exponent-docs',
+  inputSelector: '#algolia-search-box',
+  algoliaOptions: { facetFilters: [ "tags:unversioned" ], hitsPerPage: 5 }
+});
+</script>
+        
+<div class="sidebar-block">
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">SDK API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="amplitude.html">Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-loading.html">AppLoading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset.html">Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bar-code-scanner.html">BarCodeScanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blur-view.html">BlurView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="font.html">Font</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gl-view.html">GLView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagepicker.html">ImagePicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-gradient.html">LinearGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="location.html">Location</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MapView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="permissions.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segment.html">Segment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="svg.html">Svg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">Video</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          <div class="document body">
+            
+  <div class="section" id="mapview">
+<h1>MapView<a class="headerlink" href="#mapview" title="Permalink to this headline">¶</a></h1>
+<p>一个 Map 组件，在 iOS 上用 Apple Maps, Android 上用 Google Maps。由 Airbnb 创建: <a class="reference external" href="https://github.com/airbnb/react-native-maps">airbnb/react-native-maps</a>. 在 Exponent app 里用不需要任何设置，在 iOS standalone app 里用也不需要。下面有具体步骤详细说明怎么发布 Android standalone app。</p>
+<a class="reference internal image-reference" href="../../../_images/maps.png"><img alt="../../../_images/maps.png" src="../../../_images/maps.png" style="width: 100%;" /></a>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Components</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">HomeScreen</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">static</span> <span class="nx">route</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">navigationBar</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">visible</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">Components</span><span class="p">.</span><span class="na">MapView</span>
+        <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">}}</span>
+        <span class="na">initialRegion</span><span class="o">=</span><span class="p">{{</span>
+          <span class="nx">latitude</span><span class="p">:</span> <span class="m">37.78825</span><span class="p">,</span>
+          <span class="nx">longitude</span><span class="p">:</span> <span class="o">-</span><span class="m">122.4324</span><span class="p">,</span>
+          <span class="nx">latitudeDelta</span><span class="p">:</span> <span class="m">0.0922</span><span class="p">,</span>
+          <span class="nx">longitudeDelta</span><span class="p">:</span> <span class="m">0.0421</span><span class="p">,</span>
+        <span class="p">}}</span>
+      <span class="p">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="Exponent.Components.MapView">
+<code class="descclassname">Exponent.Components.</code><code class="descname">MapView</code><a class="headerlink" href="#Exponent.Components.MapView" title="Permalink to this definition">¶</a></dt>
+<dd><p>完整文档在: <a class="reference external" href="https://github.com/airbnb/react-native-maps">airbnb/react-native-maps</a>.</p>
+</dd></dl>
+
+<div class="section" id="android-standalone-app">
+<h2>发布 Android standalone app<a class="headerlink" href="#android-standalone-app" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>创建你的 app, 注意你的 Android package name (比如: ca.brentvatne.growlerprowler)</li>
+<li>打开 <a class="reference external" href="https://console.developers.google.com/apis/credentials">https://console.developers.google.com/apis/credentials</a>, 创建一个新的项目.</li>
+<li>创建成功后，在 project 里激活 Google Maps Android API。</li>
+<li>点击 Go to Credentials</li>
+<li>创建一个 key, 点击 Restrict Key</li>
+<li>key restriction 选择 Android apps, 给 key 一个你想要的名字。</li>
+<li>点击 Add package name and fingerprint</li>
+<li>运行 <code class="docutils literal"><span class="pre">keytool</span> <span class="pre">-list</span> <span class="pre">-printcert</span> <span class="pre">-jarfile</span> <span class="pre">growler.apk</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">SHA1</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{</span> <span class="pre">print</span> <span class="pre">$2</span> <span class="pre">}'</span></code> (替换 <code class="docutils literal"><span class="pre">growler.apk</span></code> 为第 1 步生成的apk).</li>
+<li>把第 8 步的输出填写到 &quot;SHA-1 certificate fingerprint&quot; 字段。</li>
+<li>添加 package name (比如: ca.brentvatne.growlerprowler) 到 Package name 字段. 点击 save.</li>
+<li>打开 <code class="docutils literal"><span class="pre">exp.json</span></code>, 添加 api key 到 <code class="docutils literal"><span class="pre">android.config.googleMaps.apiKey</span></code> 字段. <a class="reference external" href="https://github.com/brentvatne/growler-prowler/commit/3496e69b14adb21eb2025ef9e0719c2edbef2aa2">See an example diff</a>.</li>
+<li>和第 1 步一样重新 build 你的 standalone app。</li>
+</ol>
+</div>
+<div class="section" id="ios-standalone-app">
+<h2>发布 iOS standalone app<a class="headerlink" href="#ios-standalone-app" title="Permalink to this headline">¶</a></h2>
+<p>不需要特殊的配置。</p>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="location.html" title="previous chapter (use the left arrow)">&laquo; Location</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="permissions.html" title="next chapter (use the right arrow)">Permissions &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="permissions.html" title="Permissions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="location.html" title="Location"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >SDK API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="../../../_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2016, Exponent. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

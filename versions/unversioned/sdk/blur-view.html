@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="../../../_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../../../_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/img/apple-touch-icon-180x180.png"/>
+  <link rel="icon" type="image/png" href="../../../_static/img/favicon-32x32.png" sizes="32x32"/>
+  <meta name="msapplication-TileColor" content="#023c69"/>
+  <meta name="msapplication-TileImage" content="../../../_static/img/mstile-144x144.png"/>
+  <meta name="theme-color" content="#023c69"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+  
+    <title>BlurView &mdash; Exponent unversioned documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     'unversioned',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="SDK API Reference" href="index.html" />
+    <link rel="next" title="Constants" href="constants.html" />
+    <link rel="prev" title="BarCodeScanner" href="bar-code-scanner.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="constants.html" title="Constants"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bar-code-scanner.html" title="BarCodeScanner"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">SDK API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    ../index.html" class="text-logo">Exponent</a>
+
+<p id="version-indicator"> unversioned </p>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="../../../search.html" method="GET" role="form">
+        <div class="input-group">
+          <input id="algolia-search-box" name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+  appId: 'S6DBW4862L',
+  apiKey: '59ebba04e5d2e4bed5d5ae12eed28bdd',
+  indexName: 'exponent-docs',
+  inputSelector: '#algolia-search-box',
+  algoliaOptions: { facetFilters: [ "tags:unversioned" ], hitsPerPage: 5 }
+});
+</script>
+        
+<div class="sidebar-block">
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">SDK API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="amplitude.html">Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-loading.html">AppLoading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset.html">Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bar-code-scanner.html">BarCodeScanner</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BlurView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Contacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="facebook.html">Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="font.html">Font</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gl-view.html">GLView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="google.html">Google</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imagepicker.html">ImagePicker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-gradient.html">LinearGradient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map-view.html">MapView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="permissions.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="segment.html">Segment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="svg.html">Svg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">Video</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          <div class="document body">
+            
+  <div class="section" id="blurview">
+<h1>BlurView<a class="headerlink" href="#blurview" title="Permalink to this headline">¶</a></h1>
+<p>一个 React 组件，在 iOS 上渲染一个 native blur view(毛玻璃效果), 在 Android 生成类似半透明的 view。通常用在导航栏或者 tab bars，比如:</p>
+<a class="reference internal image-reference" href="../../../_images/nav-bar-blur.png"><img alt="../../../_images/nav-bar-blur.png" src="../../../_images/nav-bar-blur.png" style="width: 400px;" /></a>
+<div class="section" id="example-tinteffect">
+<h2>Example: tintEffect<a class="headerlink" href="#example-tinteffect" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../../_images/tint-effect-example.png"><img alt="../../../_images/tint-effect-example.png" src="../../../_images/tint-effect-example.png" style="width: 100%;" /></a>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">AppRegistry</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;react-native&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Exponent</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Components</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">BlurViewExample</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s">&#39;https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png&#39;</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">View</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">Image</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">width</span><span class="p">:</span> <span class="m">192</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="m">192</span><span class="p">}}</span> <span class="na">source</span><span class="o">=</span><span class="p">{{</span><span class="nx">uri</span><span class="p">}}</span> <span class="p">/&gt;</span>
+
+        <span class="p">{</span> <span class="cm">/* Change tintEffect here to reproduce the above image */</span> <span class="p">}</span>
+        <span class="p">&lt;</span><span class="nt">Components</span><span class="p">.</span><span class="na">BlurView</span> <span class="na">tintEffect</span><span class="o">=</span><span class="s">&quot;light&quot;</span> <span class="na">style</span><span class="o">=</span><span class="p">{</span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">absoluteFill</span><span class="p">}&gt;</span>
+          <span class="p">&lt;</span><span class="nt">Image</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">width</span><span class="p">:</span> <span class="m">96</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="m">96</span><span class="p">}}</span> <span class="na">source</span><span class="o">=</span><span class="p">{{</span><span class="nx">uri</span><span class="p">}}</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="na">Components</span><span class="p">.</span><span class="nt">BlurView</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Exponent</span><span class="p">.</span><span class="nx">registerRootComponent</span><span class="p">(</span><span class="nx">BlurViewExample</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="example-blur-strength-with-opacity">
+<h3>Example: blur strength with opacity<a class="headerlink" href="#example-blur-strength-with-opacity" title="Permalink to this headline">¶</a></h3>
+<p>You can change <code class="docutils literal"><span class="pre">opacity</span></code> style on the component to change the strength of the
+blur.</p>
+<a class="reference internal image-reference" href="../../../_images/blur-opacity-example.gif"><img alt="../../../_images/blur-opacity-example.gif" src="../../../_images/blur-opacity-example.gif" style="width: 400px;" /></a>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Animated</span><span class="p">,</span>
+  <span class="nx">AppRegistry</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;react-native&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Components</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">AnimatedBlurView</span> <span class="o">=</span> <span class="nx">Animated</span><span class="p">.</span><span class="nx">createAnimatedComponent</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">BlurView</span><span class="p">);</span>
+
+<span class="kd">class</span> <span class="nx">BlurViewExample</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">opacity</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Animated</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="m">0</span><span class="p">),</span>
+  <span class="p">}</span>
+
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_animate</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">_animate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="p">{</span> <span class="nx">opacity</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    <span class="nx">Animated</span><span class="p">.</span><span class="nx">timing</span><span class="p">(</span><span class="nx">opacity</span><span class="p">,</span> <span class="p">{</span><span class="nx">duration</span><span class="p">:</span> <span class="m">2500</span><span class="p">,</span> <span class="nx">toValue</span><span class="p">:</span> <span class="m">1</span><span class="p">}).</span><span class="nx">start</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">Animated</span><span class="p">.</span><span class="nx">timing</span><span class="p">(</span><span class="nx">opacity</span><span class="p">,</span> <span class="p">{</span><span class="nx">duration</span><span class="p">:</span> <span class="m">2500</span><span class="p">,</span> <span class="nx">toValue</span><span class="p">:</span> <span class="m">0</span><span class="p">}).</span><span class="nx">start</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_animate</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s">&#39;https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png&#39;</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">View</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="nx">margin</span><span class="p">:</span> <span class="m">30</span><span class="p">}}&gt;</span>
+        <span class="p">&lt;</span><span class="nt">View</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="nx">padding</span><span class="p">:</span> <span class="m">55</span><span class="p">,</span> <span class="nx">paddingTop</span><span class="p">:</span> <span class="m">60</span><span class="p">}}&gt;</span>
+          <span class="p">&lt;</span><span class="nt">Image</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">width</span><span class="p">:</span> <span class="m">180</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="m">180</span><span class="p">}}</span> <span class="na">source</span><span class="o">=</span><span class="p">{{</span><span class="nx">uri</span><span class="p">}}</span> <span class="p">/&gt;</span>
+
+          <span class="p">&lt;</span><span class="nt">AnimatedBlurView</span>
+            <span class="na">tintEffect</span><span class="o">=</span><span class="s">&quot;default&quot;</span>
+            <span class="na">style</span><span class="o">=</span><span class="p">{[</span><span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">absoluteFill</span><span class="p">,</span> <span class="p">{</span><span class="nx">opacity</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">opacity</span><span class="p">}]}</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s">&#39;main&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">BlurViewExample</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="props">
+<h2>props<a class="headerlink" href="#props" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="tintEffect">
+<code class="descname">tintEffect</code><a class="headerlink" href="#tintEffect" title="Permalink to this definition">¶</a></dt>
+<dd><p>一个字符串: <code class="docutils literal"><span class="pre">light</span></code>, <code class="docutils literal"><span class="pre">default</span></code>, 或者 <code class="docutils literal"><span class="pre">dark</span></code>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="bar-code-scanner.html" title="previous chapter (use the left arrow)">&laquo; BarCodeScanner</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="constants.html" title="next chapter (use the right arrow)">Constants &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="constants.html" title="Constants"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bar-code-scanner.html" title="BarCodeScanner"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >SDK API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="../../../_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2016, Exponent. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>
