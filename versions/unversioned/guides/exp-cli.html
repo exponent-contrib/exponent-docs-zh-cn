@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>exp 命令行接口 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="创建 Standalone Apps" href="building-standalone-apps.html" />
+    <link rel="prev" title="推送通知" href="push-notifications.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="building-standalone-apps.html" title="创建 Standalone Apps"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="push-notifications.html" title="推送通知"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,101 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="exp">
+<span id="exp-cli"></span><h1><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口<a class="headerlink" href="#exp" title="Permalink to this headline">¶</a></h1>
+<p>除了 XDE 我们还提供了 <code class="docutils literal"><span class="pre">exp</span></code> 命令行, 这样你可以在命令行里使用，测试或者在 CI 里使用 Exponent。</p>
+<div class="section" id="id1">
+<h2>安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>运行 <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">-g</span> <span class="pre">exp</span></code> 全局安装 <code class="docutils literal"><span class="pre">exp</span></code>.</p>
+<p>如果你之前没用过 <code class="docutils literal"><span class="pre">exp</span></code> 或者 XDe, 第一件事你需要做的是 <code class="docutils literal"><span class="pre">exp</span> <span class="pre">login</span></code>: 用你的 Exponent 账户
+登录。</p>
+</div>
+<div class="section" id="id2">
+<h2>命令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>显示所有支持的命令 <code class="docutils literal"><span class="pre">exp</span> <span class="pre">--help</span></code>:</p>
+<div class="highlight-none"><div class="highlight"><pre> Usage: exp [options] [command]
+
+
+ Commands:
+
+   android [options] [project-dir]           Opens your app in Exponent on a connected Android device
+   build:ios|bi [options] [project-dir]      Build a standalone IPA for your project, signed and ready for submission to the Apple App Store.
+   build:android|bi [options] [project-dir]  Build a standalone APK for your project, signed and ready for submission to the Google Play Store.
+   build:status|bs [project-dir]             Gets the status of a current (or most recently finished) build for your project.
+   convert|onentize [project-dir]            Initialize Exponent project files within an existing React Native project
+   diagnostics [project-dir]                 Uploads diagnostics information and returns a url to share with the Exponent team.
+   doctor [project-dir]                      Diagnoses issues with your Exponent project.
+   init|i [options] [project-dir]            Initializes a directory with an example project
+   ios [options] [project-dir]               Opens your app in Exponent in an iOS simulator on your computer
+   login [options]                           Login to exp.host
+   logout                                    Logout from exp.host
+   logs|l [options] [project-dir]            Streams the logs
+   publish|p [options] [project-dir]         Publishes your project to exp.host
+   send [options] [project-dir]              Sends a link to your project to a phone number or e-mail address
+   signup [options]                          Creates a user on exp.host
+   start|r [options] [project-dir]           Starts or restarts a local server for your app and gives you a URL to it
+   status|s [options] [project-dir]          Shows the status of the Exponent packager/server process started
+   stop|q [options] [project-dir]            Stops the server
+   url|u [options] [project-dir]             Displays the URL you can use to view your project in Exponent
+   whoami|w                                  Checks with the server and then says who you are logged in as
+
+ Options:
+
+   -h, --help             output usage information
+   -V, --version          output the version number
+   -o, --output [format]  Output format. pretty (default), raw
+
+
+``--help`` flag. For example, ``exp start --help`` outputs:
+</pre></div>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>Usage: start|r [options] [project-dir]
+
+Starts or restarts a local server for your app and gives you a URL to it
+
+Options:
+
+  -h, --help             output usage information
+  -s, --send-to [dest]   A phone number or e-mail address to send a link to
+
+  -a, --android          Opens your app in Exponent on a connected Android device
+  -i, --ios              Opens your app in Exponent in a currently running iOS simulator on your computer
+  -q, --qr               Will generate a QR code for the URL
+  -m, --host [mode]      tunnel (default), lan, localhost. Type of host to use. &quot;tunnel&quot; allows you to view your link on other networks
+  -p, --protocol [mode]  exp (default), http, redirect. Type of protocol. &quot;exp&quot; is recommended right now
+  --tunnel               Same as --host tunnel
+  --lan                  Same as --host lan
+  --localhost            Same as --host localhost
+  --dev                  Turns dev flag on
+  --no-dev               Turns dev flag off
+  --strict               Turns strict flag on
+  --no-strict            Turns strict flag off
+  --minify               Turns minify flag on
+  --no-minify            Turns minify flag off
+  --exp                  Same as --protocol exp
+  --http                 Same as --protocol http
+  --redirect             Same as --protocol redirect
+  --foreground           Start in the foreground. Not recommended. Use &quot;exp logs&quot; instead
+</pre></div>
+</div>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="push-notifications.html" title="previous chapter (use the left arrow)">&laquo; 推送通知</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="building-standalone-apps.html" title="next chapter (use the right arrow)">创建 Standalone Apps &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +262,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="building-standalone-apps.html" title="创建 Standalone Apps"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="push-notifications.html" title="推送通知"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

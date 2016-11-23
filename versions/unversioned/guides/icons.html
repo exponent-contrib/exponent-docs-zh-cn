@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>Icons &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="using-custom-fonts.html" />
+    <link rel="prev" title="预加载 &amp; 缓存 Assets" href="preloading-and-caching-assets.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="using-custom-fonts.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="preloading-and-caching-assets.html" title="预加载 &amp; 缓存 Assets"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,139 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="icons">
+<span id="id1"></span><h1>Icons<a class="headerlink" href="#icons" title="Permalink to this headline">¶</a></h1>
+<p>尽管 emoji 很火, 不是没一个 app 都可以所有 icons 都用 emoji的 -- 或许你想用一些流行的
+icon 字体，比如 FontAwesome, Glyphicons 或者 Ionicons， 或者一些 PNGs 你从
+<a class="reference external" href="https://thenounproject.com/">The Noun Project</a>  精挑细选的。Exponent 目前不
+支持 SVGs。接下来我们会介绍这两种方式。</p>
+<div class="section" id="exponent-vector-icons">
+<h2>&#64;exponent/vector-icons<a class="headerlink" href="#exponent-vector-icons" title="Permalink to this headline">¶</a></h2>
+<p>如果你从 XDE 里创建的模板项目的话, 她包含 8 种不同的图标集, 你可以在
+<a class="reference external" href="https://exponentjs.github.io/vector-icons/">&#64;exponent/vector-icons directory</a>
+浏览所有的图标。</p>
+<a class="reference external image-reference" href="https://exponentjs.github.io/vector-icons/"><img alt="../../../_images/vector-icons-directory.png" src="../../../_images/vector-icons-directory.png" style="width: 100%;" /></a>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Ionicons</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;@exponent/vector-icons&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">IconExample</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">Ionicons</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;md-checkmark-circle&quot;</span> <span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="m">32</span><span class="p">}</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;green&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这个组件加载 Ionicons 字体，如果之前没加载的话，生成一个之前提到过的 vector-icons 里边的一个
+复选 (checkmark) 图标. <code class="docutils literal"><span class="pre">&#64;exponent/vector-icons</span></code> 是在 <a class="reference external" href="https://github.com/oblador/react-native-vector-icons">react-native-vector-icons</a> 基础上创建的，而且 API 类似。
+唯一的区别是 <code class="docutils literal"><span class="pre">&#64;exponent/vector-icons</span></code> 使用了一个更习惯的 <code class="docutils literal"><span class="pre">import</span></code> 风格:</p>
+<p><code class="docutils literal"><span class="pre">import</span> <span class="pre">{</span> <span class="pre">Ionicons</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">'&#64;exponent/vector-icons';</span></code> instead of..
+<code class="docutils literal"><span class="pre">import</span> <span class="pre">Ionicons</span> <span class="pre">from</span> <span class="pre">'react-native-vector-icons/Ionicons';</span></code>.</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> 和在 Exponent 里 <span class="xref std std-ref">使用自定义字体</span> 一样, 你需要在渲染之前先加载图标字体。所以以上的 <code class="docutils literal"><span class="pre">Ionicons.font</span></code>, 对应 <code class="docutils literal"><span class="pre">{ionicons:</span> <span class="pre">require('path/to/ionicons.ttf')}</span></code>, 更多文档可以查看 <a class="reference internal" href="preloading-and-caching-assets.html#all-about-assets"><span class="std std-ref">Preloading assets</span></a>.</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>自定义图标字体<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>第一步，确保你导入你的自定义图标字体。<span class="xref std std-ref">了解更多关于加载自定义字体</span>. 一旦你的字体加载完毕，你需要创建一个图标集。
+<code class="docutils literal"><span class="pre">&#64;exponent/vector-icons</span></code> 提供了三个方法帮助你创建图标集。</p>
+<div class="section" id="createiconset">
+<h3>createIconSet<a class="headerlink" href="#createiconset" title="Permalink to this headline">¶</a></h3>
+<p>基于 <code class="docutils literal"><span class="pre">glyphMap</span></code> (key 是图标名称， value 是 UTF-8 字符或者对应的字符码) 返回你的自定义图标字体。
+<code class="docutils literal"><span class="pre">fontFamily</span></code> 是字体的名称，不是文件名称。更多细节可以参考: <a class="reference external" href="https://github.com/oblador/react-native-vector-icons/blob/master/README.md#custom-fonts">react-native-vector-icons</a></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">Font</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createIconSet</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;@exponent/vector-icons&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">glyphMap</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;icon-name&#39;</span><span class="p">:</span> <span class="m">1234</span><span class="p">,</span> <span class="nx">test</span><span class="p">:</span> <span class="s">&#39;∆&#39;</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="nx">CustomIcon</span> <span class="o">=</span> <span class="nx">createIconSet</span><span class="p">(</span><span class="nx">glyphMap</span><span class="p">,</span> <span class="s">&#39;FontName&#39;</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">CustomIconExample</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">fontLoaded</span><span class="p">:</span> <span class="k">false</span>
+  <span class="p">}</span>
+  <span class="nx">async</span> <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">await</span> <span class="nx">Font</span><span class="p">.</span><span class="nx">loadAsync</span><span class="p">({</span>
+      <span class="s">&#39;FontName&#39;</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s">&#39;assets/fonts/custom-icon-font.ttf&#39;</span><span class="p">)</span>
+    <span class="p">});</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">fontLoaded</span><span class="p">:</span> <span class="k">true</span><span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">fontLoaded</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">null</span><span class="p">;}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">CustomIcon</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;icon-name&quot;</span> <span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="m">32</span><span class="p">}</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="createiconsetfromfontello">
+<h3>createIconSetFromFontello<a class="headerlink" href="#createiconsetfromfontello" title="Permalink to this headline">¶</a></h3>
+<p>基于一个 <a class="reference external" href="http://fontello.com">Fontello</a> 配置文件来方便的创建自定义字体。不要忘记之前讨论过的导入字体，
+然后把 <code class="docutils literal"><span class="pre">config.json</span></code> 放在你的项目里， 使用 <code class="docutils literal"><span class="pre">Font.loadAsync</span></code>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Once your custom font has been loaded...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createIconSetFromFontello</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;@exponent/vector-icons&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">fontelloConfig</span> <span class="nx">from</span> <span class="s">&#39;./config.json&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Icon</span> <span class="o">=</span> <span class="nx">createIconSetFromFontello</span><span class="p">(</span><span class="nx">fontelloConfig</span><span class="p">,</span> <span class="s">&#39;FontName&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="createiconsetfromicomoon">
+<h3>createIconSetFromIcoMoon<a class="headerlink" href="#createiconsetfromicomoon" title="Permalink to this headline">¶</a></h3>
+<p>基于一个 <a class="reference external" href="https://icomoon.io">IcoMoon</a> 配置文件来方便的创建自定义字体。不要忘记之前讨论过的导入字体，
+然后把 <code class="docutils literal"><span class="pre">config.json</span></code> 放在你的项目里， 使用 <code class="docutils literal"><span class="pre">Font.loadAsync</span></code>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Once your custom font has been loaded...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createIconSetFromIcoMoon</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;@exponent/vector-icons&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">icoMoonConfig</span> <span class="nx">from</span> <span class="s">&#39;./config.json&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Icon</span> <span class="o">=</span> <span class="nx">createIconSetFromIcoMoon</span><span class="p">(</span><span class="nx">icoMoonConfig</span><span class="p">,</span> <span class="s">&#39;FontName&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>图标图片<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>如果你知道怎么用 react-native <code class="docutils literal"><span class="pre">&lt;Image&gt;</span></code> 组件的话，就太 easy 了。</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Image</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;react-native&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">SlackIcon</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">Image</span>
+        <span class="na">source</span><span class="o">=</span><span class="p">{</span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;../assets/images/slack-icon.png&#39;</span><span class="p">)}</span>
+        <span class="na">fadeDuration</span><span class="o">=</span><span class="p">{</span><span class="m">0</span><span class="p">}</span>
+        <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">width</span><span class="p">:</span> <span class="m">20</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="m">20</span><span class="p">}}</span>
+      <span class="p">/&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>假设我们的 <code class="docutils literal"><span class="pre">SlackIcon</span></code> class 在 <code class="docutils literal"><span class="pre">my-project/components/SlackIcon.js</span></code>,
+我们的图标文件在 <code class="docutils literal"><span class="pre">my-project/assets/images</span></code>, 为了引用图片我们 require 图片的
+相对路径。你可以提供不同的像素密集程度的图标，会自动选择最合适的图片。在这个例子里，
+我们实际上用了 <code class="docutils literal"><span class="pre">slack-icon&#64;2x.png</span></code> 还有 <code class="docutils literal"><span class="pre">slack-icon&#64;3x.png</span></code>, 所以如果我是
+在 iPhone 6s 上的话，看到的图片会是 <code class="docutils literal"><span class="pre">slack-icon&#64;3x.png</span></code>. 更多可以看
+<a class="reference external" href="https://facebook.github.io/react-native/docs/images.html#static-image-resources">Images guide in the
+react-native documentation</a>.</p>
+<p>我们也可以设置 <code class="docutils literal"><span class="pre">fadeDuration</span></code> (Android 特有的属性) 为 <code class="docutils literal"><span class="pre">0</span></code>, 因为通常我们想让图标立刻
+显示出来，而不是等待几百毫秒慢慢的显示。</p>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="preloading-and-caching-assets.html" title="previous chapter (use the left arrow)">&laquo; 预加载 &amp; 缓存 Assets</a>
+      </div>
+    
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +300,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="using-custom-fonts.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="preloading-and-caching-assets.html" title="预加载 &amp; 缓存 Assets"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

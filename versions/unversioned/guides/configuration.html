@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>exp.json 配置 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="查看日志" href="logging.html" />
+    <link rel="prev" title="Development Mode" href="development-mode.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="logging.html" title="查看日志"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="development-mode.html" title="Development Mode"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,357 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="exp-json">
+<span id="exp"></span><h1>exp.json 配置<a class="headerlink" href="#exp-json" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal"><span class="pre">exp.json</span></code> 包含你 app 里除了代码以外的配置。下面是所有支持的属性:</p>
+<dl class="attribute">
+<dt id="name">
+<code class="descname">name</code><a class="headerlink" href="#name" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong>. Exponent 客户端里 app 的名字，还有 standalone app 主屏的名字。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="description">
+<code class="descname">description</code><a class="headerlink" href="#description" title="Permalink to this definition">¶</a></dt>
+<dd><p>简短描述下你的 app 是什么， 为什么会让人觉得很棒。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slug">
+<code class="descname">slug</code><a class="headerlink" href="#slug" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong>. 发布时候友好的 url name, 比如: <code class="docutils literal"><span class="pre">exp.host/&#64;your-username/slug</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdkVersion">
+<code class="descname">sdkVersion</code><a class="headerlink" href="#sdkVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong>. App 用到的 Exponent sdkVersion。应该和 package.json 里定义的版本同步。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="version">
+<code class="descname">version</code><a class="headerlink" href="#version" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 app 版本，你可以用任何喜欢的版本号规范。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="orientation">
+<code class="descname">orientation</code><a class="headerlink" href="#orientation" title="Permalink to this definition">¶</a></dt>
+<dt id="锁定app, ``portrait`` 或者 ``landscape``。默认不锁定，支持 default, portrait, landscape。">
+<code class="descname">锁定app, ``portrait`` 或者 ``landscape``。默认不锁定，支持 default, portrait, landscape。</code><a class="headerlink" href="#锁定app, ``portrait`` 或者 ``landscape``。默认不锁定，支持 default, portrait, landscape。" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primaryColor">
+<code class="descname">primaryColor</code><a class="headerlink" href="#primaryColor" title="Permalink to this definition">¶</a></dt>
+<dt id="在 Android 上，代表多任务时 app 的颜色。当前不支持 iOS, 但是以后可能会用到。">
+<code class="descname">在 Android 上，代表多任务时 app 的颜色。当前不支持 iOS, 但是以后可能会用到。</code><a class="headerlink" href="#在 Android 上，代表多任务时 app 的颜色。当前不支持 iOS, 但是以后可能会用到。" title="Permalink to this definition">¶</a></dt>
+<dt id="16进制颜色代码, 比如: ``'#000000'``">
+<code class="descname">16进制颜色代码, 比如: ``'#000000'``</code><a class="headerlink" href="#16进制颜色代码, 比如: ``'#000000'``" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="iconUrl">
+<code class="descname">iconUrl</code><a class="headerlink" href="#iconUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>App 的图标链接。我们推荐你用一张透明的 512x512 png。会显示在主屏，还有 Exponent 客户端里。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="notification">
+<code class="descname">notification</code><a class="headerlink" href="#notification" title="Permalink to this definition">¶</a></dt>
+<dd><p>推送通知配置。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt>
+<code class="descname">iconUrl</code></dt>
+<dd><p>推送通知图标链接。48x48 png, 灰阶透明。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="color">
+<code class="descname">color</code><a class="headerlink" href="#color" title="Permalink to this definition">¶</a></dt>
+<dd><p>推送通知图标显示在通知中心时候的 Tint color. 16 进制颜色代码，比如: <code class="docutils literal"><span class="pre">'#000000'</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="androidMode">
+<code class="descname">androidMode</code><a class="headerlink" href="#androidMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>单独显示每次通知 (<code class="docutils literal"><span class="pre">default</span></code>), 或者折叠成一个 (<code class="docutils literal"><span class="pre">collapse</span></code>).
+默认 collapse。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="androidCollapsedTitle">
+<code class="descname">androidCollapsedTitle</code><a class="headerlink" href="#androidCollapsedTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果 <code class="docutils literal"><span class="pre">androidMode</span></code> 设置为 <code class="docutils literal"><span class="pre">collapse</span></code> 的话, 用来显示折叠信息的标题。 比如: <code class="docutils literal"><span class="pre">'#{unread_notifications}</span> <span class="pre">new</span> <span class="pre">interactions'</span></code>.</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="loading">
+<code class="descname">loading</code><a class="headerlink" href="#loading" title="Permalink to this definition">¶</a></dt>
+<dd><p>当用户打开 app 时的加载 (拉取，缓存 Javascript bundle 还有 assets) 页面配置。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt>
+<code class="descname">iconUrl</code></dt>
+<dd><p>启动 app 时候显示的图标。大小比例不限制，必须是 .png。
+Url that points to the icon to display while starting up the app. Image size and aspect ratio are up to you. Must be a .png.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exponentIconColor">
+<code class="descname">exponentIconColor</code><a class="headerlink" href="#exponentIconColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果没有提供 icon 的话，我们会默认显示 Exponent logo。你可以选择 <code class="docutils literal"><span class="pre">white</span></code> 或者 <code class="docutils literal"><span class="pre">blue</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exponentIconGrayscale">
+<code class="descname">exponentIconGrayscale</code><a class="headerlink" href="#exponentIconGrayscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>类似 <code class="docutils literal"><span class="pre">exponentIconColor</span></code>, 但是指明灰阶 (<code class="docutils literal"><span class="pre">1</span></code>) 或者不是灰阶 (<code class="docutils literal"><span class="pre">0</span></code>)。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="backgroundImageUrl">
+<code class="descname">backgroundImageUrl</code><a class="headerlink" href="#backgroundImageUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载页面背景图片。大小比例不限制，必须是 .png。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="backgroundColor">
+<code class="descname">backgroundColor</code><a class="headerlink" href="#backgroundColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载页面背景颜色。
+16 进制颜色代码，比如: <code class="docutils literal"><span class="pre">'#000000'</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hideExponentText">
+<code class="descname">hideExponentText</code><a class="headerlink" href="#hideExponentText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponent 默认在加载页面末端显示一些文字。设置为 <code class="docutils literal"><span class="pre">true</span></code> 可以不显示。</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="appKey">
+<code class="descname">appKey</code><a class="headerlink" href="#appKey" title="Permalink to this definition">¶</a></dt>
+<dt id="Exponent 默认选择用 AppRegistry 注册的 ``main`` application。你可以修改这个属性如果需要更改的话。">
+<code class="descname">Exponent 默认选择用 AppRegistry 注册的 ``main`` application。你可以修改这个属性如果需要更改的话。</code><a class="headerlink" href="#Exponent 默认选择用 AppRegistry 注册的 ``main`` application。你可以修改这个属性如果需要更改的话。" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="androidStatusBarColor">
+<code class="descname">androidStatusBarColor</code><a class="headerlink" href="#androidStatusBarColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>16 进制颜色代码，比如: <code class="docutils literal"><span class="pre">'#000000'</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="androidHideExponentNotificationInShellApp">
+<code class="descname">androidHideExponentNotificationInShellApp</code><a class="headerlink" href="#androidHideExponentNotificationInShellApp" title="Permalink to this definition">¶</a></dt>
+<dt id="Exponent 默认为你的 app 添加一个通知，包含刷新按钮还有 debug 信息。设为 ``true`` 来关闭通知。">
+<code class="descname">Exponent 默认为你的 app 添加一个通知，包含刷新按钮还有 debug 信息。设为 ``true`` 来关闭通知。</code><a class="headerlink" href="#Exponent 默认为你的 app 添加一个通知，包含刷新按钮还有 debug 信息。设为 ``true`` 来关闭通知。" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="scheme">
+<code class="descname">scheme</code><a class="headerlink" href="#scheme" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Standalone Apps Only</strong>. 廉价到你的 app 的 url scheme。比如， 如果设为 <code class="docutils literal"><span class="pre">'rnplay'</span></code> 的话, 点击 rnplay:// 链接就会打开你的 app。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="entryPoint">
+<code class="descname">entryPoint</code><a class="headerlink" href="#entryPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 main Javascript 的相对路径。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="extra">
+<code class="descname">extra</code><a class="headerlink" href="#extra" title="Permalink to this definition">¶</a></dt>
+<dd><p>你想传给你的 experience 的额外参数。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="rnCliPath">
+<code class="descname">rnCliPath</code><a class="headerlink" href="#rnCliPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="packagerOpts">
+<code class="descname">packagerOpts</code><a class="headerlink" href="#packagerOpts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ignoreNodeModulesValidation">
+<code class="descname">ignoreNodeModulesValidation</code><a class="headerlink" href="#ignoreNodeModulesValidation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="nodeModulesPath">
+<code class="descname">nodeModulesPath</code><a class="headerlink" href="#nodeModulesPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ios">
+<code class="descname">ios</code><a class="headerlink" href="#ios" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Standalone Apps Only</strong>. iOS standalone app 相关配置</p>
+<blockquote>
+<div><dl class="attribute">
+<dt id="bundleIdentifier">
+<code class="descname">bundleIdentifier</code><a class="headerlink" href="#bundleIdentifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 iOS standalone app 的 bundle identifier。必须在 App Store 上保证唯一。可以看 <a class="reference external" href="http://stackoverflow.com/questions/11347470/what-does-bundle-identifier-mean-in-the-ios-project">这个 StackOverflow question</a>.</p>
+<p>iOS bundle identifier 的命名，比如: host.exp.exponent, exp.host 是我们的域，Exponent 是我们的一个 app。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="buildNumber">
+<code class="descname">buildNumber</code><a class="headerlink" href="#buildNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 iOS standalone app 的 Build number。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="config">
+<code class="descname">config</code><a class="headerlink" href="#config" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="fabric">
+<code class="descname">fabric</code><a class="headerlink" href="#fabric" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://get.fabric.io/">Twitter Fabric</a> keys, 来支持 Crashlytics 和其他服务。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt id="apiKey">
+<code class="descname">apiKey</code><a class="headerlink" href="#apiKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 Fabric API key</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="buildSecret">
+<code class="descname">buildSecret</code><a class="headerlink" href="#buildSecret" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 Fabric build secret</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="googleSignIn">
+<code class="descname">googleSignIn</code><a class="headerlink" href="#googleSignIn" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://developers.google.com/identity/sign-in/ios/start-integrating">Google Sign-In iOS SDK</a> keys, standalone app 需要的.</p>
+<blockquote>
+<div><dl class="attribute">
+<dt id="reservedClientId">
+<code class="descname">reservedClientId</code><a class="headerlink" href="#reservedClientId" title="Permalink to this definition">¶</a></dt>
+<dd><p>保留的 client id url scheme。 可以在 <cite>GoogeService-Info.plist</cite> 里找到。</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="android">
+<code class="descname">android</code><a class="headerlink" href="#android" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Standalone Apps Only</strong>. Android standalone app 相关配置。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt id="package">
+<code class="descname">package</code><a class="headerlink" href="#package" title="Permalink to this definition">¶</a></dt>
+<dd><p>你的 Android standalone app package name。必须在 Play Store 上保证唯一。可以看: <a class="reference external" href="http://stackoverflow.com/questions/6273892/android-package-name-convention">这个 StackOverflow question</a>.
+Reverse DNS notation unique name for your app. For example, host.exp.exponent, where exp.host is our domain and Exponent is our app.</p>
+<p>package name 是一个倒置 DNS 标记, 比如: host.exp.exponent, exp.host 是我们的域，Exponent 是我们的一个 app。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="versionCode">
+<code class="descname">versionCode</code><a class="headerlink" href="#versionCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Google Play 需要的版本号。每次发布递增 1, <a class="reference external" href="https://developer.android.com/studio/publish/versioning.html">https://developer.android.com/studio/publish/versioning.html</a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">config</code></dt>
+<dd><dl class="attribute">
+<dt>
+<code class="descname">fabric</code></dt>
+<dd><p><a class="reference external" href="https://get.fabric.io/">Twitter Fabric</a> keys, 来支持 Crashlytics 和其他服务。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt>
+<code class="descname">apiKey</code></dt>
+<dd><p>你的 Fabric API key</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">buildSecret</code></dt>
+<dd><p>你的 Fabric build secret</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="googleMaps">
+<code class="descname">googleMaps</code><a class="headerlink" href="#googleMaps" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://developers.google.com/maps/documentation/android-api/signup">Google Maps Android SDK</a> key, standalone app 需要。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt>
+<code class="descname">apiKey</code></dt>
+<dd><p>你的 Google Maps Android SDK API key。</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">googleSignIn</code></dt>
+<dd><p><a class="reference external" href="https://developers.google.com/identity/sign-in/android/start-integrating">Google Sign-In Android SDK</a> keys, standalone app 需要。</p>
+<blockquote>
+<div><dl class="attribute">
+<dt>
+<code class="descname">apiKey</code></dt>
+<dd><p>Android API key. 可以在 developer console 的 credentials 里或者 <cite>google-services.json</cite> 找到。</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="certificateHash">
+<code class="descname">certificateHash</code><a class="headerlink" href="#certificateHash" title="Permalink to this definition">¶</a></dt>
+<dd><p>用来 build apk 的签名证书的 SHA-1 hash, 不能包含 <cite>:</cite>,
+可以在 <cite>google-services.json</cite> 里找到. <a class="reference external" href="https://developers.google.com/android/guides/client-auth">https://developers.google.com/android/guides/client-auth</a></p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="development-mode.html" title="previous chapter (use the left arrow)">&laquo; Development Mode</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="logging.html" title="next chapter (use the right arrow)">查看日志 &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +518,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="logging.html" title="查看日志"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="development-mode.html" title="Development Mode"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

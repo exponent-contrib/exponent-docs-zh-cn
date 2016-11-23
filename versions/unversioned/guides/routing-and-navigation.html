@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>路由 &amp; 导航 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="推送通知" href="push-notifications.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="using-custom-fonts.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="push-notifications.html" title="推送通知"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="using-custom-fonts.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,150 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="routing-and-navigation">
+<span id="id1"></span><h1>路由 &amp; 导航<a class="headerlink" href="#routing-and-navigation" title="Permalink to this headline">¶</a></h1>
+<p>一个网页上的 &quot;单页应用&quot; 不是一个只有一个页面的应用，不然的话大多数情况下都是没啥用的；实际上
+这个应用不会请求浏览器为每个新的页面跳转到对应的URL。实际上一个 &quot;单页应用&quot; 会用它自己的路由
+系统 (比如: react-router), 这样子可以解藕页面和对应的地址栏。通常它也会更新地址栏，但是直接
+覆盖会导致浏览器重新加载整个页面。目的就是让体验更流畅，还有更像 app。</p>
+<p>这点同样适用于本地手机应用。当你跳转到新的页面，与其刷新整个 app 然后从那个页面重新开始，
+这个页面会 push 到一个导航栈，然后动画过渡到对应配置里的 view。</p>
+<p>Exponent 里我们推荐的路由 &amp; 导航库是 <a class="reference external" href="https://github.com/exponentjs/ex-navigation">ExNavigation</a>.
+你可以看 <a class="reference external" href="https://github.com/exponentjs/ex-navigation">full documentation for ExNavigation on Github.</a>.</p>
+<div class="section" id="id2">
+<h2>试试看<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>熟悉 ExNavigation 最好的办法是先试试 <a class="reference external" href="https://getexponent.com/&#64;community/ex-navigation-example">ExNavigation example Exponent app</a>. 然后回来这里，继续看下面的!</p>
+</div>
+<div class="section" id="id3">
+<h2>一点介绍: 最简单的路由配置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>你可以复制下面的代码到一个新的 Exponent 项目里边的 <code class="docutils literal"><span class="pre">main.js</span></code>, 然后运行:
+<code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">&#64;exponent/ex-navigation</span> <span class="pre">--save</span></code>.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="nx">Exponent</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">AppRegistry</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;react-native&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">createRouter</span><span class="p">,</span>
+  <span class="nx">NavigationProvider</span><span class="p">,</span>
+  <span class="nx">StackNavigation</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;@exponent/ex-navigation&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">createRouter</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="nx">home</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">HomeScreen</span><span class="p">,</span>
+<span class="p">}));</span>
+
+<span class="kd">class</span> <span class="nx">HomeScreen</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">static</span> <span class="nx">route</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">navigationBar</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">title</span><span class="p">:</span> <span class="s">&#39;Home&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">View</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">alignItems</span><span class="p">:</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="nx">justifyContent</span><span class="p">:</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">}}&gt;</span>
+        <span class="p">&lt;</span><span class="nt">Text</span> <span class="na">onPress</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handlePress</span><span class="p">}&gt;</span>HomeScreen!<span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">_handlePress</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s">&#39;home&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>首先我们创建一个 router, keys 对应不同的页面. <code class="docutils literal"><span class="pre">HomeScreen</span></code> 是我们第一个 <strong>route component</strong>,
+我们在它上面设置一个 <code class="docutils literal"><span class="pre">static</span> <span class="pre">route</span></code> 对象属性来明确。然后我们配置这个路由的不同属性，比如过渡的样式，
+导航栏上显示什么样的按钮。注册为 routes 的组件会有一个特殊的 prop <code class="docutils literal"><span class="pre">navigator</span></code> 传入，navigator 允许
+你做一些路由操作，比如 <code class="docutils literal"><span class="pre">push</span></code> 还有 <code class="docutils literal"><span class="pre">pop</span></code>. 这里我们 push home screens 到最顶端。但是为了让它工作，
+我们需要先把 <code class="docutils literal"><span class="pre">home</span></code> 路由添加到 <code class="docutils literal"><span class="pre">StackNavigation</span></code>, 所以我们可以有一个路由栈，可以 push, pop。</p>
+<p>我们通过在 app 的 root 设置一个 <code class="docutils literal"><span class="pre">NavigationProvider</span></code> 来初始化 ExNavigation。然后我们
+显示一个 <code class="docutils literal"><span class="pre">StackNavigation</span></code> child, 设置它的 <code class="docutils literal"><span class="pre">initialRoute</span></code> 为我们之前在 <code class="docutils literal"><span class="pre">createRouter</span></code>
+里定义的 <code class="docutils literal"><span class="pre">home</span></code> route。</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">class</span> <span class="nx">App</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">NavigationProvider</span> <span class="na">router</span><span class="o">=</span><span class="p">{</span><span class="nx">Router</span><span class="p">}&gt;</span>
+        <span class="p">&lt;</span><span class="nt">StackNavigation</span> <span class="na">initialRoute</span><span class="o">=</span><span class="s">&quot;home&quot;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">NavigationProvider</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Exponent</span><span class="p">.</span><span class="nx">registerRootComponent</span><span class="p">(</span><span class="nx">App</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tab">
+<h2>了解 tab 模版<a class="headerlink" href="#tab" title="Permalink to this headline">¶</a></h2>
+<p>你可能不想每次创建一个新的项目，都重新开始。Tab 就是 Exponent 提供的一个模版可以让你更快开发你的
+app. <code class="docutils literal"><span class="pre">&#64;exponent/ex-navigation</span></code> 默认包含它，所以你可以直接用 tab 路由。</p>
+<p>让我们来看看 tab 模版和路由相关的项目结构把。你不需要完全遵照这个风格，只不过我们发现它很适合我们。</p>
+<div class="highlight-text"><div class="highlight"><pre>├── main.js
+├── navigation
+│   ├── RootNavigation.js
+│   └── Router.js
+├── screens
+│   ├── HomeScreen.js
+│   ├── LinksScreen.js
+│   └── SettingsScreen.js
+</pre></div>
+</div>
+<div class="section" id="main-js">
+<h3>main.js<a class="headerlink" href="#main-js" title="Permalink to this headline">¶</a></h3>
+<p>在 Exponent 应用里，这个文件通常是你 app 注册的 root 组件。在 root 组件里，你通常
+包含所有高级的 <code class="docutils literal"><span class="pre">Provider</span></code> 组件，比如 <code class="docutils literal"><span class="pre">react-redux</span> <span class="pre">Provider</span></code>, 还有
+ExNavigation <code class="docutils literal"><span class="pre">NavigationProvider</span></code>. 正如上面例子里你看到的，通常我们也会渲染我们的
+<code class="docutils literal"><span class="pre">StackNavigation</span></code> 组件。大部分应用包含很多嵌套的 stacks, 我们会看到的。</p>
+</div>
+<div class="section" id="screens-screen-js">
+<h3>screens/<a href="#id4"><span class="problematic" id="id5">*</span></a>Screen.js<a class="headerlink" href="#screens-screen-js" title="Permalink to this headline">¶</a></h3>
+<p>我把所有代表 app 里页面的 root 组件都在在一个 <code class="docutils literal"><span class="pre">Screens</span></code> 目录里 (一个页面不一定非得在哪里定义过，
+只要你认为它是合适的 -- 对我来说，通常是任何东西我认为可以 <code class="docutils literal"><span class="pre">push</span></code> 或者 <code class="docutils literal"><span class="pre">pop</span></code> 的)。</p>
+</div>
+<div class="section" id="navigation-router-js">
+<h3>navigation/Router.js<a class="headerlink" href="#navigation-router-js" title="Permalink to this headline">¶</a></h3>
+<p>在上面的这个简单例子里，我们在 <code class="docutils literal"><span class="pre">main.js</span></code> 只用一行就定义了我们的 Router -- 刚开始这样子可以，但是
+最终随着页面的增多为了清晰我们会把它抽出来放到单独的文件。也有其他的场景你需要直接导入这个 Router.</p>
+</div>
+<div class="section" id="navigation-rootnavigation-js">
+<h3>navigation/RootNavigation.js<a class="headerlink" href="#navigation-rootnavigation-js" title="Permalink to this headline">¶</a></h3>
+<p>这个组件用来渲染我们的根路由布局 -- 在这个项目里，我们用的 tabs。你也可能会在 Android 里用抽屉布局，
+或者其他的布局。在这个模版里，我们在 <code class="docutils literal"><span class="pre">main.js</span></code> 渲染的 <code class="docutils literal"><span class="pre">StackNavigation</span></code> 只会指向
+<code class="docutils literal"><span class="pre">RootNavigation</span></code> screen, 每个 tab 会渲染它对应的 <code class="docutils literal"><span class="pre">StackNavigation</span></code> 组件。</p>
+<p>我们赋予它另外一个功能是订阅推送通知，这样子如果收到或者选择新的通知，我们可以响应切换到新的路由。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>了解更多关于路由 &amp; 导航<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">ExNavigation</span></code> 不是唯一的路由库，它是我们推荐的方式，而且我们可能不能回答关于其他库的问题。
+你可以了解更多 <a class="reference external" href="https://github.com/exponentjs/ex-navigation">on the Github repository</a>,
+或者看一些用 <code class="docutils literal"><span class="pre">ExNavigation</span></code> 创建的一些 app, 比如
+<a class="reference external" href="https://github.com/brentvatne/growler-prowler">Growler Prowler</a>, <a class="reference external" href="https://github.com/exponentjs/rnplay">React Native Playground</a>,
+还有 <a class="reference external" href="https://github.com/exponentjs/ex-navigation/tree/master/example">ExNavigation example app</a>.</p>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="using-custom-fonts.html" title="previous chapter (use the left arrow)">&laquo; &lt;no title&gt;</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="push-notifications.html" title="next chapter (use the right arrow)">推送通知 &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +311,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="push-notifications.html" title="推送通知"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="using-custom-fonts.html" title="&lt;no title&gt;"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

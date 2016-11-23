@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>查看日志 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="exp.json 配置" href="configuration.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="debugging.html" title="Debugging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="exp.json 配置"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,91 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="logging">
+<span id="id1"></span><h1>查看日志<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
+<p>在 Exponent 应用里写日志和浏览器里是一样的: 使用 <code class="docutils literal"><span class="pre">console.log</span></code>, <code class="docutils literal"><span class="pre">console.warn</span></code> 还有 <code class="docutils literal"><span class="pre">console.error</span></code>.
+注意: 暂时在 remote debugging mode 外我们不支持 <code class="docutils literal"><span class="pre">console.table</span></code>.</p>
+<div class="section" id="exponent">
+<h2>推荐: 用 Exponent 工具查看日志<a class="headerlink" href="#exponent" title="Permalink to this headline">¶</a></h2>
+<p>当你打开一个 XDE 或者 exp 服务的 app, 这个 app 会发送日志到 server, 然后你就可以方便的查看。这就意味着你不需要非得设备连接在你的电脑上才可以看到日志 -- 实际上，即使地球另外一端的某个家伙打开了应用，你也可以看到他们设备上你的应用日志。</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> 没有看到日志? 确保你使用至少 Exponent sdkVersion 7.0.0, 安装了 <code class="docutils literal"><span class="pre">exponent</span></code> npm 包, 而且已经导入 (比如: 在你的 main JS 顶部有 <code class="docutils literal"><span class="pre">import</span> <span class="pre">*</span> <span class="pre">as</span> <span class="pre">Exponent</span> <span class="pre">from</span> <span class="pre">'exponent'</span></code>)。</div></blockquote>
+<div class="section" id="xde">
+<h3>XDE 日志窗口<a class="headerlink" href="#xde" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../../../_images/xde-logs.png"><img alt="XDE window with logs" src="../../../_images/xde-logs.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">在 XDE 里你会注意到，当你打开了一个 sdkVersion &gt;= 7.0.0 的 app, 日志窗口会一分为二。你的 app 日志在右边，packager 日志在左边。</span></p>
+</div>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../../../_images/xde-logs-device-picker.png"><img alt="XDE window with device picker selected" src="../../../_images/xde-logs-device-picker.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">XDE 也让你可以在打开这个 app 的不同设备间切换。</span></p>
+</div>
+</div>
+<div class="section" id="exp-logs">
+<h3>exp logs<a class="headerlink" href="#exp-logs" title="Permalink to this headline">¶</a></h3>
+<p>如果你用我们的命令行 <code class="docutils literal"><span class="pre">exp</span></code> 的话，你也可以用 <code class="docutils literal"><span class="pre">exp</span> <span class="pre">logs</span></code> 来查看日志 (确保已经启动你的服务, 在项目目录 <code class="docutils literal"><span class="pre">exp</span> <span class="pre">start</span></code>)。</p>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../../../_images/exp-logs.png"><img alt="Terminal output from running xde logs" src="../../../_images/exp-logs.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">所有连接设备的Packager 日志还有 app 日志都会显示在这个屏幕, <code class="docutils literal"><span class="pre">CTRL+C</span></code> 退出。</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>可选: 手动获取设备日志<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>通常不是必须的，但是如果你需要查看设备上所有日志，甚至包括其他 app 还有系统本身的日志, 你可以用下面的一些方法。</p>
+<div class="section" id="ios">
+<h3>查看 iOS 虚拟机日志<a class="headerlink" href="#ios" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gui-log">
+<h4>第 1 种方式: 使用 GUI log<a class="headerlink" href="#gui-log" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>在虚拟机里, 敲 <code class="docutils literal"><span class="pre">⌘</span> <span class="pre">+</span> <span class="pre">/</span></code>, <em>或者</em> 点击 <code class="docutils literal"><span class="pre">Debug</span> <span class="pre">-&gt;</span> <span class="pre">Open</span> <span class="pre">System</span> <span class="pre">Log</span></code> -- 这两种方式都会打开一个日志窗口，显示你设备里的所有日志，包含你的 Exponent app 的日志。</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h4>第 2 种方式: 在终端打开<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>运行 <code class="docutils literal"><span class="pre">instruments</span> <span class="pre">-s</span> <span class="pre">devices</span></code></li>
+<li>找到你在用的虚拟机的设备 / OS 版本， 比如: <code class="docutils literal"><span class="pre">iPhone</span> <span class="pre">6s</span> <span class="pre">(9.2)</span> <span class="pre">[5083E2F9-29B4-421C-BDB5-893952F2B780]</span></code></li>
+<li>后面方括号里的是设备代码， 接下来你需要做的是: <code class="docutils literal"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">~/Library/Logs/CoreSimulator/DEVICE_CODE/system.log</span></code>, 比如: <code class="docutils literal"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">~/Library/Logs/CoreSimulator/5083E2F9-29B4-421C-BDB5-893952F2B780/system.log</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="iphone">
+<h3>查看你的 iPhone 日志<a class="headerlink" href="#iphone" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">libimobiledevice</span></code></li>
+<li>插上你的手机</li>
+<li><code class="docutils literal"><span class="pre">idevicepair</span> <span class="pre">pair</span></code></li>
+<li>点击接受</li>
+<li>运行 <code class="docutils literal"><span class="pre">idevicesyslog</span></code></li>
+</ul>
+</div>
+<div class="section" id="android">
+<h3>查看 Android 设备日志或者虚拟机<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>确保已安装 Android SDK</li>
+<li>确保 <a class="reference external" href="https://developer.android.com/studio/run/device.html#device-developer-options">设备上 USB 调试已打开</a> (对虚拟机来说没必要).</li>
+<li>运行 <code class="docutils literal"><span class="pre">adb</span> <span class="pre">logcat</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="configuration.html" title="previous chapter (use the left arrow)">&laquo; exp.json 配置</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="debugging.html" title="next chapter (use the right arrow)">Debugging &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +252,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="debugging.html" title="Debugging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="configuration.html" title="exp.json 配置"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>Debugging &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="Assets" href="assets.html" />
+    <link rel="prev" title="查看日志" href="logging.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="assets.html" title="Assets"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="logging.html" title="查看日志"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,100 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="debugging">
+<h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>在虚拟机上<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>替代不了真实设备上的体验还有性能</strong>, 但是调试的时候虚拟机会更加方便。
+using an emulator/simulator.</p>
+<div class="section" id="ios">
+<h3>iOS<a class="headerlink" href="#ios" title="Permalink to this headline">¶</a></h3>
+<p>iOS 的话，可以用Xcode 自带的虚拟机，如果还没安装的话，你可以在
+<a class="reference external" href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>
+上安装 Xcode。</p>
+</div>
+<div class="section" id="android">
+<h3>Android<a class="headerlink" href="#android" title="Permalink to this headline">¶</a></h3>
+<p>Android 的话，与其标准的虚拟机, 我们推荐 Genymotion 虚拟机 -- 我们发现功能更多，更快，
+用起来也更简单。</p>
+<p><a class="reference external" href="https://www.genymotion.com/fun-zone/">下载 Genymotion</a> (free version), 然后按照 <a class="reference external" href="https://docs.genymotion.com/Content/01_Get_Started/Installation.htm">Genymotion installation guide</a> 安装. 安装成功后, 创建一个虚拟设备 - 我们推荐 Nexus 5, 你可以指定你的 Android 版本. 准备好以后启动这个虚拟设备。</p>
+</div>
+</div>
+<div class="section" id="javascript">
+<h2>调试 Javascript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<p>你可以用 Chrome debugger tools 来调试 Exponent apps。与其在你的手机上运行 app
+的 Javascript, 它会在 Chrome 的一个 webworker 来运行。你可以接着设置断点，查看变量，
+运行代码，等等，就像你调试 web app 一样。</p>
+<ul>
+<li><p class="first">为保证最好的开发体验，请先在 XDE 上修改 host type 为 <code class="docutils literal"><span class="pre">LAN</span></code> 或者 <code class="docutils literal"><span class="pre">localhost</span></code>. 调试用
+<code class="docutils literal"><span class="pre">Tunnel</span></code> 的话，可能会比较慢甚至导致你的 app 不可用。同时，确保勾选 <code class="docutils literal"><span class="pre">Development</span> <span class="pre">Mode</span></code>.</p>
+<a class="reference internal image-reference" href="../../../_images/debugging-host.png"><img alt="../../../_images/debugging-host.png" src="../../../_images/debugging-host.png" style="width: 100%;" /></a>
+</li>
+<li><p class="first">如果你在用 <code class="docutils literal"><span class="pre">LAN</span></code>, 确保你的设备和你的开发机在同一个 wifi 里。可能在某些共有网络有些问题。
+要支持 <code class="docutils literal"><span class="pre">localhost</span></code> 的话，iOS 必须用虚拟机，Android 则必须设备通过 usb 连接到机器。</p>
+</li>
+<li><p class="first">在设备上打开 app 的话，可以晃动 (或者在 Mac 虚拟机上按 <cite>Ctrl-Cmd-Z</cite>) 来打开开发菜单。
+点击 <code class="docutils literal"><span class="pre">Debug</span> <span class="pre">JS</span> <span class="pre">Remotely</span></code>, 会打开一个 Chrome tab, 链接是: <code class="docutils literal"><span class="pre">http://localhost:19001/debugger-ui</span></code>.
+然后，你可以在 Javascript console 里设置断点，或者其他交互。关闭的话，可以晃动设备，
+关掉 Chrome debugging。</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">console.log</span></code> 的代码行数在 Chrome debugging 默认不起作用。你需要打开 Chrome Dev Tools settings,
+切换到 &quot;Blackboxing&quot; tab, 确保已勾选 &quot;Blackbox content scripts&quot;, 然后选中 &quot;Blackbox&quot;,
+添加 pattern <code class="docutils literal"><span class="pre">exponent/src/Logs.js</span></code>.</p>
+</li>
+</ul>
+<div class="section" id="id2">
+<h3>本地调试问题解决<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>当你在 XDE 里打开一个项目，然后点击 <code class="docutils literal"><span class="pre">Open</span> <span class="pre">on</span> <span class="pre">Android</span></code> 的时候，XDE 会自动告诉你的设备，
+<code class="docutils literal"><span class="pre">localhost:19000</span></code> 和 <code class="docutils literal"><span class="pre">19001</span></code> 会连接到你的开发机器。只要你的设备一直插入，或者虚拟机
+一直在运行。如果你是用 <code class="docutils literal"><span class="pre">localhost</span></code> 在调试，但是不管用的话，关掉 app, 重新用
+<code class="docutils literal"><span class="pre">Open</span> <span class="pre">on</span> <span class="pre">Android</span></code> 来打开 app。或者你可以手动转发端口，如果你安装了 Android developer tools
+的话，可以 <code class="docutils literal"><span class="pre">adb</span> <span class="pre">reverse</span> <span class="pre">tcp:19000</span> <span class="pre">tcp:19000</span></code> - <code class="docutils literal"><span class="pre">adb</span> <span class="pre">reverse</span> <span class="pre">tcp:19001</span> <span class="pre">tcp:19001</span></code></p>
+</div>
+<div class="section" id="source-maps-async">
+<h3>Source maps 还有 async 方法<a class="headerlink" href="#source-maps-async" title="Permalink to this headline">¶</a></h3>
+<p>Source maps 和 async 方法不是 100% 可靠。React Native 和 Chrome 的 source mapping 有时候
+还是有些问题，所以如果你想确保你在正确的地方设置断点，你应该直接在你的代码里使用 <code class="docutils literal"><span class="pre">debugger</span></code> 调用。</p>
+</div>
+</div>
+<div class="section" id="http">
+<h2>调试 HTTP<a class="headerlink" href="#http" title="Permalink to this headline">¶</a></h2>
+<p>调试 app 的 HTTP 请求的话，你需要用到一个代理。下面这几个都可以:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.charlesproxy.com/documentation/configuration/browser-and-system-configuration/">Charles Proxy</a> ($50 刀, 我们推荐用这个)</li>
+<li><a class="reference external" href="https://medium.com/&#64;rotxed/how-to-debug-http-s-traffic-on-android-7fbe5d2a34#.hnhanhyoz">mitmproxy</a></li>
+<li><a class="reference external" href="http://www.telerik.com/fiddler">Fiddler</a></li>
+</ul>
+<p>在 Android 上, <a class="reference external" href="https://play.google.com/store/apps/details?id=com.lechucksoftware.proxy.proxysettings">Proxy Settings</a>
+app 在 debug 和 non-debug 模式间切换很有帮助。不过很可惜还不支持 Android M。
+doesn't work with Android M yet.</p>
+<p>React Native 也有一些努力在 Chrome DevTools 上显示网络请求:
+<a class="reference external" href="https://github.com/facebook/react-native/issues/934">future work</a></p>
+</div>
+<div class="section" id="hot-reloading-live-reloading">
+<h2>Hot Reloading 和 Live Reloading<a class="headerlink" href="#hot-reloading-live-reloading" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://facebook.github.io/react-native/blog/2016/03/24/introducing-hot-reloading.html">Hot Module Reloading</a>
+可以重新加载代码改变，而不会丢失页面或者导航栈里的 state。激活的话，只需要晃动设备 (或者在 Mac 虚拟机上点击 <cite>Ctrl-Cmd-Z</cite>),
+然后点击 &quot;Enable Hot Reloading&quot;。Live Reload 会重新加载整个 JS 环境，Hot
+Module Reloading 相对来说让你的开发流程更快些。你需要确保没同时打开这两个选项，因为这是不支持的。</p>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="logging.html" title="previous chapter (use the left arrow)">&laquo; 查看日志</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="assets.html" title="next chapter (use the right arrow)">Assets &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +261,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="assets.html" title="Assets"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="logging.html" title="查看日志"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>推送通知 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="exp 命令行接口" href="exp-cli.html" />
+    <link rel="prev" title="路由 &amp; 导航" href="routing-and-navigation.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="exp-cli.html" title="exp 命令行接口"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="routing-and-navigation.html" title="路由 &amp; 导航"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,191 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="push-notifications">
+<span id="id1"></span><h1>推送通知<a class="headerlink" href="#push-notifications" title="Permalink to this headline">¶</a></h1>
+<p>推送通知是一个很重要的功能，就像 <em>&quot;growth hackers&quot;</em> 经常说的那样，保持，重新唤起用户的
+注意力，或者其他东西。在我看来通知是一种非常方便的方式去知道什么时候一个 app 发生了一件相关
+的事情，然后我可以点击进去了解更多。让我们来看看怎么在 Exponent 里实现推送通知。
+提前剧透: 真的是太简单了。</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> iOS 还有 Android 虚拟机不能接收推送通知，你必须在真正的设备上测试。</div></blockquote>
+<p>实现推送通知主要分为三大步: 发送一个用户的 Exponent Push Token 到你的服务器, 当你需要发送
+通知的时候，调用 Exponent 的推送 API (参数是 token), 然后在你的 app 里回应收到或者选择对应
+的通知 (比如跳到通知指向的某个页面)。</p>
+<div class="section" id="exponent-push-token">
+<h2>1. 存储用户的 Exponent Push Token 到你的服务器<a class="headerlink" href="#exponent-push-token" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../../../_images/saving-token.png"><img alt="Diagram explaining saving tokens" src="../../../_images/saving-token.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">为了推送一个通知到某个用户，我们需要知道他的设备。当然我们知道我们用户的账户信息，但是 Apple, Google, 还有 Exponent 不知道哪些设备对应的是你的用户系统里边的某个用户，比如: &quot;Brent&quot;。Exponent 负责通过 Exponent Push Token 在 Apple 和 Google 平台标识你的设备。所以我们需要做的唯一一件事情就是发送这个 Token 到你的服务器，然后你可以关联到你的用户系统，之后需要发送推送通知的时候就会用到它。</span></p>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">Permissions</span><span class="p">,</span> <span class="nx">Notifications</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">PUSH_ENDPOINT</span> <span class="o">=</span> <span class="s">&#39;https://your-server.com/users/push-token&#39;</span><span class="p">;</span>
+
+<span class="nx">async</span> <span class="kd">function</span> <span class="nx">registerForPushNotificationsAsync</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Android remote notification permissions are granted during the app</span>
+  <span class="c1">// install, so this will only ask on iOS</span>
+  <span class="kd">let</span> <span class="p">{</span> <span class="nx">status</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Permissions</span><span class="p">.</span><span class="nx">askAsync</span><span class="p">(</span><span class="nx">Permissions</span><span class="p">.</span><span class="nx">REMOTE_NOTIFICATIONS</span><span class="p">);</span>
+
+  <span class="c1">// Stop here if the user did not grant permissions</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">status</span> <span class="o">!==</span> <span class="s">&#39;granted&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Get the token that uniquely identifies this device</span>
+  <span class="kd">let</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Notifications</span><span class="p">.</span><span class="nx">getExponentPushTokenAsync</span><span class="p">();</span>
+
+  <span class="c1">// POST the token to our backend so we can use it to send pushes from there</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">PUSH_ENDPOINT</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">method</span><span class="p">:</span> <span class="s">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&#39;Accept&#39;</span><span class="p">:</span> <span class="s">&#39;application/json&#39;</span><span class="p">,</span>
+      <span class="s">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s">&#39;application/json&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+      <span class="nx">token</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="p">:</span> <span class="nx">token</span><span class="p">,</span>
+       <span class="p">},</span>
+       <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">username</span><span class="p">:</span> <span class="s">&#39;Brent&#39;</span><span class="p">,</span>
+       <span class="p">},</span>
+    <span class="p">}),</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exponent-api-token">
+<h2>2. 调用 Exponent 的推送 API, 传入用户的 Token<a class="headerlink" href="#exponent-api-token" title="Permalink to this headline">¶</a></h2>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../../../_images/sending-notification.png"><img alt="Diagram explaining sending a push from your server to device" src="../../../_images/sending-notification.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">推送通知必须来自于哪里，这个 &quot;哪里&quot; 可能就是你的服务器 (你也可以写一个命令行来发送，原理都是一样的)。当你准备推送通知的时候，取出来用户的 Exponent push token, 然后用普通的 HTTP POST 请求发送给 Exponent API。我们提供一些语言的sdk:</span></p>
+<div class="legend">
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/exponentjs/exponent-server-sdk-ruby">exponent-server-sdk-ruby</a></li>
+<li><a class="reference external" href="https://github.com/exponentjs/exponent-server-sdk-python">exponent-server-sdk-python</a></li>
+<li><a class="reference external" href="https://github.com/exponentjs/exponent-server-sdk-node">exponent-server-sdk-node</a></li>
+</ul>
+<p>如果你想在另一个语言里边实现的话，可以查看源码。作为示例，让我们看下 <a class="reference external" href="https://github.com/exponentjs/simple-rails-push-server-example">simple-rails-push-server-example</a>.</p>
+</div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;exponent-server-sdk&#39;</span>
+
+<span class="k">class</span> <span class="nc">TokensController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="c1"># You probably actually want to associate this with a user,</span>
+    <span class="c1"># otherwise it&#39;s not particularly useful</span>
+    <span class="vi">@token</span> <span class="o">=</span> <span class="no">Token</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">value</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:token</span><span class="o">][</span><span class="ss">:value</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+
+    <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="vi">@token</span><span class="o">.</span><span class="n">present?</span>
+      <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Welcome back!&#39;</span>
+    <span class="k">else</span>
+      <span class="vi">@token</span> <span class="o">=</span> <span class="no">Token</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">token_params</span><span class="p">)</span>
+      <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Welcome to Exponent&#39;</span>
+    <span class="k">end</span>
+
+    <span class="n">exponent</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span>
+      <span class="ss">exponentPushToken</span><span class="p">:</span> <span class="vi">@token</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+      <span class="ss">message</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span>
+      <span class="ss">data</span><span class="p">:</span> <span class="p">{</span><span class="ss">a</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="c1"># Any arbitrary data to include with the notification</span>
+    <span class="p">)</span>
+
+    <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="p">{</span><span class="ss">success</span><span class="p">:</span> <span class="kp">true</span><span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">token_params</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:token</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:value</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">exponent</span>
+    <span class="vi">@exponent</span> <span class="o">||=</span> <span class="no">Exponent</span><span class="o">::</span><span class="no">Push</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>3. 处理接收或者选择通知<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>对 Android 来说，这步可以略过 -- 如果你的通知都是纯显示性质的，当收到或者选择的时候你不想
+处理的话，你不用再往下看了。通知像你想的那样会显示在系统通知中心，点击通知会打开，把 app 带到前台。</p>
+<p>对于 iOS 来说，你需要明智处理 app 在前台运行时收到的推送通知，因为不然的话用户永远不会看到
+这些通知。iOS 里 app 在前台运行时收到的推送通知不会出现在系统通知列表里。通常解决办法是手动
+显示这些通知。比如你在 iOS Messenger里收到一条消息，app 运行在前台，但是对话没有打开的话，
+你会看到一个自定义的通知UI, 通知会从屏幕上方慢慢的滑下来。</p>
+<p>还好 Exponent 里处理推送通知很简单，你只需要在 <code class="docutils literal"><span class="pre">Notifications</span></code> 对象上添加一个监听。</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Exponent</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Notifications</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;react-native&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">registerForPushNotificationsAsync</span> <span class="nx">from</span> <span class="s">&#39;registerForPushNotificationsAsync&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">AppContainer</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">notification</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="p">};</span>
+
+  <span class="nx">componentWillMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">registerForPushNotificationsAsync</span><span class="p">();</span>
+
+    <span class="c1">// Handle notifications that are received or selected while the app</span>
+    <span class="c1">// is open. If the app was closed and then opened by tapping the</span>
+    <span class="c1">// notification (rather than just tapping the app icon to open it),</span>
+    <span class="c1">// this function will fire on the next tick after the app starts</span>
+    <span class="c1">// with the notification data.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_notificationSubscription</span> <span class="o">=</span> <span class="nx">Notifications</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleNotification</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">_handleNotification</span> <span class="o">=</span> <span class="p">(</span><span class="nx">notification</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">notification</span><span class="p">:</span> <span class="nx">notification</span><span class="p">});</span>
+  <span class="p">};</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">View</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="nx">justifyContent</span><span class="p">:</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="nx">alignItems</span><span class="p">:</span> <span class="s">&#39;center&#39;</span><span class="p">}}&gt;</span>
+        <span class="p">&lt;</span><span class="nt">Text</span><span class="p">&gt;</span>Origin: <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">origin</span><span class="p">}&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">Text</span><span class="p">&gt;</span>Data: <span class="p">{</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">data</span><span class="p">)}&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Exponent</span><span class="p">.</span><span class="nx">registerRootComponent</span><span class="p">(</span><span class="nx">AppContainer</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3>通知处理时间<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>单从上面还是不清楚你的 app 在收到通知那一刻的状态下，应该什么时候处理通知。
+为了帮助理解, 可以看下面这张表:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../../_images/receiving-push.png"><img alt="Timing of notifications" src="../../../_images/receiving-push.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="routing-and-navigation.html" title="previous chapter (use the left arrow)">&laquo; 路由 &amp; 导航</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-link" href="exp-cli.html" title="next chapter (use the right arrow)"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口 &raquo;</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +352,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="exp-cli.html" title="exp 命令行接口"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="routing-and-navigation.html" title="路由 &amp; 导航"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

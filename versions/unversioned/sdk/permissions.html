@@ -110,6 +110,21 @@ docsearch({
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/index.html">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/how-exponent-works.html">Exponent 是怎么工作的</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">SDK API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amplitude.html">Amplitude</a></li>
 <li class="toctree-l2"><a class="reference internal" href="app-loading.html">AppLoading</a></li>
@@ -158,7 +173,7 @@ docsearch({
 </dd>
 <dt class="field-name">Returns</dt><dd class="field-body"><p class="first">返回一个 <code class="docutils literal"><span class="pre">Promise</span></code>, 包含权限的一些信息，比如状态，过期时间，还有 scope (是否应用这种权限类型) 。</p>
 </dd>
-<dt class="field-name">Example</dt><dd class="field-body"><div class="first last highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">alertIfRemoteNotificationsDisabledAsync</span><span class="p">()</span> <span class="p">{</span>
+<dt class="field-name">Example</dt><dd class="field-body"><div class="first last highlight-javascript"><div class="highlight"><pre><span class="nx">async</span> <span class="kd">function</span> <span class="nx">alertIfRemoteNotificationsDisabledAsync</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">Permissions</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">Exponent</span><span class="p">;</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">status</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Permissions</span><span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="nx">Permissions</span><span class="p">.</span><span class="nx">REMOTE_NOTIFICATIONS</span><span class="p">);</span>
 
@@ -183,7 +198,7 @@ docsearch({
 </dd>
 <dt class="field-name">Returns</dt><dd class="field-body"><p class="first">返回一个 <code class="docutils literal"><span class="pre">Promise</span></code>, 包含权限的一些信息，比如状态，过期时间，还有 scope (是否应用这种权限类型) 。</p>
 </dd>
-<dt class="field-name">Example</dt><dd class="field-body"><div class="first last highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">async</span> <span class="kd">function</span> <span class="nx">getLocationAsync</span><span class="p">()</span> <span class="p">{</span>
+<dt class="field-name">Example</dt><dd class="field-body"><div class="first last highlight-javascript"><div class="highlight"><pre><span class="nx">async</span> <span class="kd">function</span> <span class="nx">getLocationAsync</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">Location</span><span class="p">,</span> <span class="nx">Permissions</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">Exponent</span><span class="p">;</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">status</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">Permissions</span><span class="p">.</span><span class="nx">askAsync</span><span class="p">(</span><span class="nx">Permissions</span><span class="p">.</span><span class="nx">LOCATION</span><span class="p">);</span>
 

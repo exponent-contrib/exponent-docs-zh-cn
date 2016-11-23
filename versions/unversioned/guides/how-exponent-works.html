@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>Exponent 是怎么工作的 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -41,7 +41,10 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="Exponent unversioned documentation" href="../index.html" /> 
+    <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
+    <link rel="up" title="Guides" href="index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="upgrading-exponent.html" />
+    <link rel="prev" title="创建 Standalone Apps" href="building-standalone-apps.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -50,7 +53,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="upgrading-exponent.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="building-standalone-apps.html" title="创建 Standalone Apps"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>
     <div class="container-wrapper">
@@ -91,13 +101,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -133,10 +158,158 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="exponent">
+<span id="how-exponent-works"></span><h1>Exponent 是怎么工作的<a class="headerlink" href="#exponent" title="Permalink to this headline">¶</a></h1>
+<p>只是使用 Exponent 的话, 你不需要知道这些, 许多工程师喜欢了解他们的工具究竟是怎么工作的。
+我们会介绍一些重要的概念，包括:</p>
+<ul class="simple">
+<li>应用本地开发</li>
+<li>线上发布, 部署 app</li>
+<li>Exponent 怎么管理 SDK 更新</li>
+<li>离线打开 Exponent apps</li>
+</ul>
+<p>你也可以查看源码, fork, hack 然后给 Exponent 工具提交PR:
+<a class="reference external" href="http://github.com/exponentjs">github/&#64;exponentjs</a>.</p>
+<div class="section" id="id1">
+<h2>本地开发服务 Exponent 应用<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../../_images/fetch-app-from-xde.png"><img alt="../../../_images/fetch-app-from-xde.png" src="../../../_images/fetch-app-from-xde.png" style="width: 100%;" /></a>
+<p>有两块: Exponent 客户端和 Exponent 开发工具 (XDE 或者 or <code class="docutils literal"><span class="pre">exp</span></code> CLI),
+我们这里只简单介绍 XDE 的部分。当你在 XDE 里打开一个 app 的时候，它会启动并管理两个后台服务: Exponent Development server 还有 React Native Packager Server.</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> XDE 同时也会启动一个隧道程序，可以让你不做防火墙修改就允许局域网外的设备访问上面这些服务。想了解更多的话，可以看 <a class="reference external" href="https://ngrok.com">ngrok</a>.</div></blockquote>
+<div class="section" id="exponent-development-server">
+<h3>Exponent Development Server<a class="headerlink" href="#exponent-development-server" title="Permalink to this headline">¶</a></h3>
+<p>当你在 Exponent 客户端里输入 URL 的时候，你会向这个服务发起请求。
+它的目的是提供 <strong>Exponent Manifest</strong>, 还有作为 XDE UI 和你手机上的 Exponent 客户端
+(或者虚拟机) 之间的通信层。</p>
+<div class="section" id="id2">
+<h4>Exponent Manifest<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>下面是一个 XDE 提供的 manifest 例子。你可能立即会发现它和 <code class="docutils literal"><span class="pre">exp.json</span></code> 有很多字段是相同的
+(如果你还没看过 exp.json 的话, 文档在: <a class="reference internal" href="configuration.html#exp"><span class="std std-ref">Configuration with exp.json</span></a>)。
+下面这些字段是直接从 exp.json 获取的 -- Exponent 客户端就是这样获取你的配置的。</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;My New Project&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;A starter template&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;slug&quot;</span><span class="p">:</span><span class="s2">&quot;my-new-project&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sdkVersion&quot;</span><span class="p">:</span><span class="s2">&quot;8.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;primaryColor&quot;</span><span class="p">:</span><span class="s2">&quot;#cccccc&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iconUrl&quot;</span><span class="p">:</span><span class="s2">&quot;https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;notification&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;iconUrl&quot;</span><span class="p">:</span><span class="s2">&quot;https://s3.amazonaws.com/exp-us-standard/placeholder-push-icon.png&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;#000000&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;loading&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;iconUrl&quot;</span><span class="p">:</span><span class="s2">&quot;https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;entryPoint&quot;</span><span class="p">:</span> <span class="s2">&quot;main.js&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;packagerOpts&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;hostType&quot;</span><span class="p">:</span><span class="s2">&quot;tunnel&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;minify&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;urlType&quot;</span><span class="p">:</span><span class="s2">&quot;exp&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;urlRandomness&quot;</span><span class="p">:</span><span class="s2">&quot;2v-w3z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lanType&quot;</span><span class="p">:</span><span class="s2">&quot;ip&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;xde&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;developer&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;tool&quot;</span><span class="p">:</span><span class="s2">&quot;xde&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;bundleUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://packager.2v-w3z.notbrent.internal.exp.direct:80/apps/new-project-template/main.bundle?platform=ios&amp;dev=false&amp;strict=false&amp;minify=false&amp;hot=false&amp;includeAssetFileHashes=true&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;debuggerHost&quot;</span><span class="p">:</span><span class="s2">&quot;packager.2v-w3z.notbrent.internal.exp.direct:80&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;mainModuleName&quot;</span><span class="p">:</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;logUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://2v-w3z.notbrent.internal.exp.direct:80/logs&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Manifest 上每一个字段都会告诉 Exponent 怎么去运行你的 app。App 会先获取 manifest, 然后
+会显示你在 <code class="docutils literal"><span class="pre">exp.json</span></code> 上设置的加载图标, 然后获取你的 app 的 JavaScript (<code class="docutils literal"><span class="pre">bundleUrl</span></code> 设定的)
+-- 这个 URL 会指向 React Native Packager Server。</p>
+<p>为了把日志输出到 XDE, Exponent XDK 拦截了一些调用，比如 <code class="docutils literal"><span class="pre">console.log</span></code>, <code class="docutils literal"><span class="pre">console.warn</span></code> 等，
+然后把日志提交到 manifest 里 <code class="docutils literal"><span class="pre">logUrl</span></code> 设定的 URL。URL 的入口是 Exponent Development Server。</p>
+</div>
+</div>
+<div class="section" id="react-native-packager-server">
+<h3>React Native Packager Server<a class="headerlink" href="#react-native-packager-server" title="Permalink to this headline">¶</a></h3>
+<p>如果你不用 Exponent 而只用 React Native 的话，你应该在你的项目目录运行 <code class="docutils literal"><span class="pre">react-native</span> <span class="pre">start</span></code>
+来启动 packager。Exponent 会代替你启动 packager, 然后把它的 <code class="docutils literal"><span class="pre">STDOUT</span></code> 输出传给 XDE。这个服务
+有两个目的。</p>
+<p>第一是服务你 app 里 JavaScript 编译成的单个文件，编译任何和你手机上 JavaScript 引擎不兼容的
+JavaScript 代码, 比如说 JSX 不是合法 JavaScript -- 它是一个语言扩展，用来使 React 组件更
+方便，它会编译成普通的方法调用 -- <code class="docutils literal"><span class="pre">&lt;HelloWorld</span> <span class="pre">/&gt;</span></code></p>
+<blockquote>
+<div>会变成 <code class="docutils literal"><span class="pre">React.createElement(HelloWorld,</span> <span class="pre">{},</span> <span class="pre">null)</span></code> (更多信息可以查看 <a href="#id3"><span class="problematic" id="id4">`</span></a>JSX in Depth</div></blockquote>
+<p>&lt;<a class="reference external" href="https://facebook.github.io/react/docs/jsx-in-depth.html">https://facebook.github.io/react/docs/jsx-in-depth.html</a>&gt;`_ ). 其他语言特性比如
+<a class="reference external" href="https://blog.getexponent.com/react-native-meets-async-functions-3e6f81111173#.4c2517o5m">async/await</a>
+在大多数引擎上都是不支持的，所以必须先编译成能在你手机上 JavaScript 引擎 (JavaScript Core) 运行的
+JavaScript 代码。</p>
+<p>第二是服务 assets。当你在 app 里引用一张图片，你会写类似的:
+<code class="docutils literal"><span class="pre">&lt;Image</span> <span class="pre">source={require('./assets/example.png')}</span> <span class="pre">/&gt;</span></code>, 除非你已经缓存过这个
+asset, 不然的话你会在 XDE 日志里看到一个类似的请求:
+<code class="docutils literal"><span class="pre">&lt;START&gt;</span> <span class="pre">processing</span> <span class="pre">asset</span> <span class="pre">request</span> <span class="pre">my-proejct/assets/example&#64;3x.png</span></code>.
+注意它会服务适配你的屏幕 DPI 的 asset, 假设存在的话。</p>
+</div>
+</div>
+<div class="section" id="exponent-app">
+<h2>线上发布/部署 Exponent app<a class="headerlink" href="#exponent-app" title="Permalink to this headline">¶</a></h2>
+<p>当你发布一个 Exponent app 的时候，我们会把它编译成一个 标记为 production 的 JavaScript bundle, (最小化，减少运行时开发阶段的检查),
+然后上传这个 bundle 还有其他需要的所有 assets (文档: <a class="reference internal" href="preloading-and-caching-assets.html#all-about-assets"><span class="std std-ref">Assets</span></a>) 到 CloudFront。同时我们会上传你的
+<a class="reference internal" href="#exponent-manifest"><span class="std std-ref">Manifest</span></a> (包括大部分你的 <code class="docutils literal"><span class="pre">exp.json</span></code>) 到我们的服务器。</p>
+<p>发布成功后，我们会返回给你一个URL, 你可以把他发给任何下载 Exponent 客户端的用户。</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> 发布一个 Exponent 应用并不能让它可以被公开搜索或者在其他地方被发现, 取决于你怎么分享链接。</div></blockquote>
+<p>只要发布一完成，所有你已经存在的用户都可以更新最新的代码。只要他们安装的 Exponent 客户端里支持你在 <code class="docutils literal"><span class="pre">exp.json</span></code> 定义的 <code class="docutils literal"><span class="pre">sdkVersion</span></code>,
+下一次他(她)们打开 app 或者 刷新的时候，就会下载最新的代码。</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> 发布 app 到 Apple App Store 或者 Google Play Store 的话, 请参考 <a class="reference internal" href="building-standalone-apps.html#building-standalone-apps"><span class="std std-ref">Building Standalone Apps</span></a>. 每一次你更新 SDK 版本的话，需要重新 build 你的 二进制程序。</div></blockquote>
+</div>
+<div class="section" id="sdk">
+<h2>SDK 版本<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h2>
+<p>一个 Exponent app 里的 <code class="docutils literal"><span class="pre">sdkVersion</span></code> 说明了要用到 Exponent 里边编译好的 ObjC/Java/C
+里的某个版本。每一个 <code class="docutils literal"><span class="pre">sdkVersion</span></code> 基本上对应一个 React Native 版本加上 SDK 文档里的
+Exponent 库。</p>
+<p>Exponent 客户端应用支持多个 Exponent SDK 版本，但是 app 只能同时用一个版本。这样子你可以
+今天发布，然后一行代码不改明年照样可以用，即使我们在新的版本修改或者删除某些你的 app 依赖的 API。
+可以这样子是因为你的 app 运行的代码，仍然是当初你发布时的相同的编译代码。</p>
+<p>如果你的 app 发布了一个新的 <code class="docutils literal"><span class="pre">sdkVersion</span></code>, 如果用户还没更新到最新的 Exponent 客户端，
+他们可以仍然用之前的 <code class="docutils literal"><span class="pre">sdkVersion</span></code>.</p>
+<blockquote class="epigraph">
+<div><strong>Note:</strong> 看起来最终我们会有一个策略，多长时间保留 sdkVersions, 然后在客户端里删掉非常老的版本。但是目前来说，所有东西都支持向后兼容。</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>打开一个已经发布的 Exponent app<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../../_images/fetch-app-production.png"><img alt="../../../_images/fetch-app-production.png" src="../../../_images/fetch-app-production.png" style="width: 500px;" /></a>
+<p>和在开发阶段打开 Exponent app 基本类似，只不过这时候我们先从 Exponent 服务器拿到 manifest, 然后 manifest 会指向 CloudFront, 再获取你的 app 的 JavaScript。</p>
+</div>
+<div class="section" id="exponent-apps">
+<h2>离线打开 Exponent Apps<a class="headerlink" href="#exponent-apps" title="Permalink to this headline">¶</a></h2>
+<p>Exponent 客户端会自动缓存打开过的每个 app 的最新版本。当你打开一个 Exponent app 的时候, 它会
+尝试获取最新的版本，但是如果因为各种原因 (可能连不上网络) 失败的话, 它会加载最近缓存的版本。</p>
+<p>如果你 build 一个 standalone app, standalone 二进制程序同时会包含一个已经预缓存的 JavaScript
+版本，所以它可以在没有联网的情况下瞬间打开。继续往下读关于 standalone apps 的部分。</p>
+</div>
+<div class="section" id="standalone-apps">
+<h2>Standalone Apps<a class="headerlink" href="#standalone-apps" title="Permalink to this headline">¶</a></h2>
+<p>你也可以打包你的 Exponent 应用成一个 standalone 二进制程序, 然后提交给 Apple iTunes Store 或者 Google Play.</p>
+<p>实际上，它是在 Exponent 客户端基础上的修改, 只不过设计成转为加载单个 URL (你的 app), 不显示 Exponent 主页或者品牌。
+了解更多的话，可以看 <a class="reference internal" href="building-standalone-apps.html#building-standalone-apps"><span class="std std-ref">Building Standalone Apps</span></a>.</p>
+</div>
+</div>
+
 
           </div>
             
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-link" href="building-standalone-apps.html" title="previous chapter (use the left arrow)">&laquo; 创建 Standalone Apps</a>
+      </div>
+    
+    </div>
+    <div class="clearer"></div>
+  
         </div>
         <div class="clearfix"></div>
     </div>
@@ -146,7 +319,14 @@ docsearch({
         <li class="right" style="margin-right: 10px">
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="upgrading-exponent.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="building-standalone-apps.html" title="创建 Standalone Apps"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Exponent unversioned documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <script type="text/javascript">

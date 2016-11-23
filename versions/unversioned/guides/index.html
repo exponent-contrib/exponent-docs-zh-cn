@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>Guides &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -42,7 +42,7 @@
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="top" title="Exponent unversioned documentation" href="../index.html" />
-    <link rel="next" title="SDK API Reference" href="../sdk/index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="up-and-running.html" />
     <link rel="prev" title="FAQ" href="../introduction/faq.html" /> 
   </head>
   <body role="document">
@@ -53,7 +53,7 @@
           <a href="../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../sdk/index.html" title="SDK API Reference"
+          <a href="up-and-running.html" title="&lt;no title&gt;"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../introduction/faq.html" title="FAQ"
@@ -99,13 +99,28 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/community.html">Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/additional-resources.html">其他资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -141,7 +156,80 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="guides">
+<h1>Guides<a class="headerlink" href="#guides" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development-mode.html">Development Mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development-mode.html#xde-development-mode">在 XDE 里切换 Development Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">查看日志</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#exponent">推荐: 用 Exponent 工具查看日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#id2">可选: 手动获取设备日志</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#id1">在虚拟机上</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#javascript">调试 Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#http">调试 HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#hot-reloading-live-reloading">Hot Reloading 和 Live Reloading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assets.html">Assets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assets.html#id1">Assets 不同阶段</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html#id4">性能</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="icons.html">Icons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="icons.html#exponent-vector-icons">&#64;exponent/vector-icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html#id2">自定义图标字体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html#id4">图标图片</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html#id2">试试看</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html#id3">一点介绍: 最简单的路由配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html#tab">了解 tab 模版</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html#id6">了解更多关于路由 &amp; 导航</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="push-notifications.html">推送通知</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html#exponent-push-token">1. 存储用户的 Exponent Push Token 到你的服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html#exponent-api-token">2. 调用 Exponent 的推送 API, 传入用户的 Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="push-notifications.html#id2">3. 处理接收或者选择通知</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html#id1">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exp-cli.html#id2">命令</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#exp">1. 安装 exp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#exp-json">2. 配置 exp.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#build">3. 开始 build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#building">4. 等待 building 完成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#id2">5. 在设备或者虚拟机上测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#id3">6. 提交到对应商店</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html#id4">7. 应用更新</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html#id1">本地开发服务 Exponent 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html#exponent-app">线上发布/部署 Exponent app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html#sdk">SDK 版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html#id5">打开一个已经发布的 Exponent app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html#exponent-apps">离线打开 Exponent Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html#standalone-apps">Standalone Apps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
 
           </div>
             
@@ -151,9 +239,6 @@ docsearch({
         <a class="btn btn-link" href="../introduction/faq.html" title="previous chapter (use the left arrow)">&laquo; FAQ</a>
       </div>
     
-      <div class="pull-right">
-        <a class="btn btn-link" href="../sdk/index.html" title="next chapter (use the right arrow)">SDK API Reference &raquo;</a>
-      </div>
     </div>
     <div class="clearer"></div>
   
@@ -167,7 +252,7 @@ docsearch({
           <a href="../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../sdk/index.html" title="SDK API Reference"
+          <a href="up-and-running.html" title="&lt;no title&gt;"
              >next</a> |</li>
         <li class="right" >
           <a href="../introduction/faq.html" title="FAQ"
