@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
   
-    <title>&lt;no title&gt; &mdash; Exponent unversioned documentation</title>
+    <title>使用自定义字体 &mdash; Exponent unversioned documentation</title>
     
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -101,7 +101,7 @@ docsearch({
   <div class="sidebar-toc">
     
     
-      <ul>
+      <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/xde-tour.html">XDE 浏览</a></li>
@@ -110,7 +110,8 @@ docsearch({
 <li class="toctree-l2"><a class="reference internal" href="../introduction/faq.html">FAQ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Guides</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="up-and-running.html">创建和运行</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development-mode.html">Development Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration.html">exp.json 配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logging.html">查看日志</a></li>
@@ -118,11 +119,13 @@ docsearch({
 <li class="toctree-l2"><a class="reference internal" href="assets.html">Assets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preloading-and-caching-assets.html">预加载 &amp; 缓存 Assets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用自定义字体</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing-and-navigation.html">路由 &amp; 导航</a></li>
 <li class="toctree-l2"><a class="reference internal" href="push-notifications.html">推送通知</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exp-cli.html"><code class="docutils literal"><span class="pre">exp</span></code> 命令行接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building-standalone-apps.html">创建 Standalone Apps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how-exponent-works.html">Exponent 是怎么工作的</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading-exponent.html">升级 Exponent</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sdk/index.html">SDK API Reference</a><ul>
@@ -158,7 +161,120 @@ docsearch({
         <div id="right-column">
           <div class="document body">
             
-  
+  <div class="section" id="id1">
+<h1>使用自定义字体<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>iOS 和 Android 系统都有他们自带的平台字体，但如果你想给你的 app 增加更多的商标特性，一种精心挑选的字体会帮大忙。在这份指南中，我们会指导你如何在你的Exponent app 中添加自定义字体。我们将会使用谷歌字体 &lt;<a class="reference external" href="https://fonts.google.com/">https://fonts.google.com/</a>&gt;`_ 中的 Open Sans &lt;<a class="reference external" href="https://fonts.google.com/specimen/Open+Sans">https://fonts.google.com/specimen/Open+Sans</a>&gt;`_ 作为示例，其他任意字体的添加过程也是一样的，所以请放心地在你的 use case 中添加这个字体。开始之前，让我们前往这个网站并下载好 Open Sans &lt;<a class="reference external" href="https://fonts.google.com/specimen/Open+Sans">https://fonts.google.com/specimen/Open+Sans</a>&gt;`_。</p>
+<div class="section" id="id2">
+<h2>初始代码<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>首先我们从一个以 ”Hello world!” 为基础的 app开始。在 XDE/exp 中新建一个项目并以以下示例修改 main.js：</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">View</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;react-native&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Exponent</span> <span class="nx">from</span> <span class="s">&#39;exponent&#39;</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">View</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="nx">justifyContent</span><span class="p">:</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="nx">alignItems</span><span class="p">:</span> <span class="s">&#39;center&#39;</span> <span class="p">}}&gt;</span>
+        <span class="p">&lt;</span><span class="nt">Text</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">fontSize</span><span class="p">:</span> <span class="m">56</span> <span class="p">}}&gt;</span>
+          Hello, world!
+        <span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Exponent</span><span class="p">.</span><span class="nx">registerRootComponent</span><span class="p">(</span><span class="nx">App</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>尝试用让这个 app 在没有加入 Open Sans 之前运行起来，这样你可以避免一些基础的设置问题。</p>
+</div>
+<div class="section" id="id3">
+<h2>下载字体<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>打开你下载的 Open Sans 压缩文件，解压它并将其中的``OpenSans-Bold.ttf``复制到你的资源地址中。我们推荐的位置是``your-project/assets/fonts``。</p>
+</div>
+<div class="section" id="id4">
+<h2>载入字体<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>我们将会通过:ref:<cite>Exponent SDK &lt;exponent-sdk&gt;</cite> 组件载入并使用字体，这个组件在你新建一个新的 Exponent 项目时已经预安装好了。但是如果出于某些奇怪的原因，你可能还没安装好它，这时候你可以通过``npm install --save exponent``将其安装在你的项目地址中。添加下列的``import``在你的应用代码中：
+.. code-block:: javascript</p>
+<blockquote>
+<div>import { Font } from 'exponent';</div></blockquote>
+<p><code class="docutils literal"><span class="pre">exponent``库中提供了一个在你的</span> <span class="pre">JaveScript</span> <span class="pre">代码中接入设备原生功能的</span> <span class="pre">API。``Font</span></code> 是一个用来处理字体相关任务的模块。首先，我们需要以下功能 <a class="reference internal" href="../sdk/font.html#Exponent.Font.loadAsync" title="Exponent.Font.loadAsync"><code class="xref js js-func docutils literal"><span class="pre">Exponent.Font.loadAsync()</span></code></a> 从资源地址中载入字体。我们可以用 <code class="docutils literal"><span class="pre">App</span></code> 组件中的生命周期方式 componentDidMount() &lt;<a class="reference external" href="https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount">https://facebook.github.io/react/docs/component-specs.html#mounting-componentdidmount</a>&gt;`_来实现这个。在 <code class="docutils literal"><span class="pre">App</span></code> 中添加如下代码所示的方法。现在我们已经把字体文件存储在磁盘中而且 Font SDK 也已经导入，代码如下：</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">class</span> <span class="nx">App</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Font</span><span class="p">.</span><span class="nx">loadAsync</span><span class="p">({</span>
+      <span class="s">&#39;open-sans-bold&#39;</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s">&#39;./assets/fonts/OpenSans-Bold.ttf&#39;</span><span class="p">),</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这会载入 Font Awesome 并且在 Exponent 中的字体映射中与 <code class="docutils literal"><span class="pre">'open-sans-bold'</span></code> 链接起来。现在我们只需要在 <code class="docutils literal"><span class="pre">Text</span></code> 组件中将其调取。</p>
+<blockquote class="epigraph">
+<div><strong>说明:</strong> 在 Exponent 载入的字体目前不支持字体高度 （ <code class="docutils literal"><span class="pre">fontWeight</span></code> ） 与风格 （ <code class="docutils literal"><span class="pre">fontStyle</span></code> ） 等特性――你需要载入这些字体的变式并将他们以名称来指定，正如我们在这里对 bold 的操作。</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>使用字体<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>你或许还记得在 React Native 中使用 <code class="docutils literal"><span class="pre">fontFamily</span></code> 特性来在 <code class="docutils literal"><span class="pre">Text</span></code> 部分中指定字体。因为跟踪你载入的不同的字体文件有时会引起混淆，Exponent 提供了函数:func:<cite>Exponent.Font.style</cite> 用来返回你指定名字的字体的风格特性（包括 <code class="docutils literal"><span class="pre">fontFamily</span></code> ），所以你需要依照如下的代码来改变你的 <code class="docutils literal"><span class="pre">Text</span></code> 元素。</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">Text</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">fontFamily</span><span class="p">:</span> <span class="s">&#39;open-sans-bold&#39;</span><span class="p">,</span> <span class="nx">fontSize</span><span class="p">:</span> <span class="m">56</span> <span class="p">}}&gt;</span>
+  Hello, world!
+<span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>之后刷新 App 似乎字体还不是以 Open Sans Bold 显示，你会看到它还是以系统默认字体显示。这个问题是因为 <a class="reference internal" href="../sdk/font.html#Exponent.Font.loadAsync" title="Exponent.Font.loadAsync"><code class="xref js js-func docutils literal"><span class="pre">Exponent.Font.loadAsync()</span></code></a>  是一个异步请求并且需要一定的时间去完成。在它完成之前，<code class="docutils literal"><span class="pre">Text</span></code> 部分已经在默认字体上渲染了，因为它找不到 <code class="docutils literal"><span class="pre">'open-sans-bold'</span></code> （因为还没有被载入）</p>
+<blockquote class="epigraph">
+<div><strong>说明:</strong> 如果你感到好奇你可以在你的代码中加入 <code class="docutils literal"><span class="pre">console.log(Font.style('open-sans-bold'));</span></code>; 然后你可以看到它的值为 {fontFamily: 'some-long-id-open-sans-bold'}。为了避免因为通过 Exponent 打开的多个应用的字体崩溃，我们用 session id 预设 family name。</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>在渲染之前等待字体载入<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>我们需要在字体加载完毕之后重新渲染``Text``部分。可以在``App``部分的 state 里创建一个 boolean 值: <code class="docutils literal"><span class="pre">fontLoaded</span></code>, 用来跟踪字体是否已加载完毕。只有在 <code class="docutils literal"><span class="pre">fontLoaded</span></code> 变为 <code class="docutils literal"><span class="pre">true</span></code> 之后我们才渲染 <code class="docutils literal"><span class="pre">Text</span></code> 部分。</p>
+<p>首先在 <code class="docutils literal"><span class="pre">App</span></code> 类构造时我们初始化 <code class="docutils literal"><span class="pre">fontLoaded</span></code> 为 false：</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">class</span> <span class="nx">App</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">fontLoaded</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
+  <span class="p">};</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>接着，当字体完成载入时，我们必须把 <code class="docutils literal"><span class="pre">fontLoaded</span></code> 设为 <code class="docutils literal"><span class="pre">true</span></code> 。当字体成功加载和可以使用时，<a class="reference internal" href="../sdk/font.html#Exponent.Font.loadAsync" title="Exponent.Font.loadAsync"><code class="xref js js-func docutils literal"><span class="pre">Exponent.Font.loadAsync()</span></code></a> 会返回一个值： <code class="docutils literal"><span class="pre">Promise</span></code>。所以当我们用 <code class="docutils literal"><span class="pre">componentDidMount()</span></code> 来使用 <a class="reference external" href="https://blog.getexponent.com/react-native-meets-async-functions-3e6f81111173">async/await</a> 并等待直到字体成功加载，然后更新状态。</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">class</span> <span class="nx">App</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">async</span> <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">await</span> <span class="nx">Font</span><span class="p">.</span><span class="nx">loadAsync</span><span class="p">({</span>
+      <span class="s">&#39;open-sans-bold&#39;</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s">&#39;./assets/fonts/OpenSans-Bold.ttf&#39;</span><span class="p">),</span>
+    <span class="p">});</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">fontLoaded</span><span class="p">:</span> <span class="k">true</span> <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>最后，我们只想渲染 <code class="docutils literal"><span class="pre">Text</span></code> 部分如果 <code class="docutils literal"><span class="pre">fontLoaded</span></code> 的值为 <code class="docutils literal"><span class="pre">true</span></code> ，我们可以通过用以下操作取代 <code class="docutils literal"><span class="pre">Text</span></code> 元素：</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">View</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="nx">justifyContent</span><span class="p">:</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="nx">alignItems</span><span class="p">:</span> <span class="s">&#39;center&#39;</span> <span class="p">}}&gt;</span>
+  <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">fontLoaded</span> <span class="p">?</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">Text</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span> <span class="nx">fontFamily</span><span class="p">:</span> <span class="s">&#39;open-sans-bold&#39;</span><span class="p">,</span> <span class="nx">fontSize</span><span class="p">:</span> <span class="m">56</span> <span class="p">}}&gt;</span>
+        Hello, world!
+      <span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
+    <span class="p">)</span> <span class="p">:</span> <span class="k">null</span>
+  <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">View</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>React Native 会简单地无视值为 <code class="docutils literal"><span class="pre">null</span></code> 的子元素，所以当 <code class="docutils literal"><span class="pre">fontLoaded</span></code> 的值为 <code class="docutils literal"><span class="pre">false</span></code> 时，渲染会跳过 <code class="docutils literal"><span class="pre">Text</span></code> 部分。所以现在刷新此 app 你会看到它渲染了 Font Awesome 的玻璃图标！</p>
+<blockquote class="epigraph">
+<div><strong>说明:</strong> 通常你希望想要在 app 显示前载入默认字体来在字体载入之后避免文字闪烁。一个推荐的方法是移动 <code class="docutils literal"><span class="pre">Font.loadAsync</span></code> 命令到顶层组件。</div></blockquote>
+</div>
+</div>
+
 
           </div>
             
